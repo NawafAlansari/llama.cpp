@@ -3,7 +3,43 @@
 #pragma once
 
 #include "llama.h"  // Assuming you have a file named "llama.h" that contains the definition of gpt_params
+#include "common.h"
+#include "grammar-parser.h"
+#include "build-info.h"
+#include "console.h"
+
+#include <cassert>
+#include <cinttypes>
+#include <cmath>
+#include <cstdio>
+#include <cstring>
+#include <ctime>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 #include <string>
+#include <vector>
+
+#if defined (__unix__) || (defined (__APPLE__) && defined (__MACH__))
+#include <signal.h>
+#include <unistd.h>
+#elif defined (_WIN32)
+#define WIN32_LEAN_AND_MEAN
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <windows.h>
+#include <signal.h>
+#endif
+
+#if defined(_MSC_VER)
+#pragma warning(disable: 4244 4267) // possible loss of data
+#endif
+
+void write_logfile(
+    const llama_context * ctx, const gpt_params & params, const llama_model * model,
+    const std::vector<llama_token> & input_tokens, const std::string & output,
+    const std::vector<llama_token> & output_tokens);
 
 /**
  * @brief Initializes the gpt_params structure.
@@ -52,7 +88,7 @@ void configureConsole(const gpt_params& params);
  * @param params The gpt_params structure containing the parameters to be checked.
  * @return true if checks were successful, false if the program should terminate.
  */
-bool checkAndAdjustParams(const gpt_params& params);
+bool checkAndAdjustParams(gpt_params& params);
 
 
 /**
@@ -70,7 +106,7 @@ void initializeBackend(int numa);
  * @param ctx: Pointer to the primary context.
  * @param ctx_guidance: Pointer to the guidance context, if any.
  */
-void initializeModelAndContext(const gpt_params& params, llama_model** model, llama_context** ctx, llama_context** ctx_guidance);
+bool initializeModelAndContext(const gpt_params& params, llama_model** model, llama_context** ctx, llama_context** ctx_guidance);
 
 
 /**

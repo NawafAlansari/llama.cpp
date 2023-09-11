@@ -1,0 +1,7 @@
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/modular_main/CMakeFiles/modular_main.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/modular_main/CMakeFiles/edit_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/modular_main/CMakeFiles/rebuild_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/modular_main/CMakeFiles/list_install_components.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/modular_main/CMakeFiles/install.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/modular_main/CMakeFiles/install/local.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/modular_main/CMakeFiles/install/strip.dir

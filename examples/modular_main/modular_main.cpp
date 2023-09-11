@@ -48,13 +48,22 @@ static bool is_interacting = false;
 
 
 int main(int argc, char** argv){ 
+
     gpt_params params; 
+    g_params = &params;
+
 
     if(!initializeParams(argc, argv, params)){
         return 1; 
     }
 
-    configureLogging(argc, argv);
+//configure logging 
+#ifndef LOG_DISABLE_LOGS
+    log_set_target(log_filename_generator("main", "log"));
+    LOG_TEE("Log start\n");
+    log_dump_cmdline(argc, argv);
+#endif // LOG_DISABLE_LOGS
+
     configureConsole(params); 
 
     if (!checkAndAdjustParams(params)) {
@@ -71,8 +80,11 @@ int main(int argc, char** argv){
      g_model = &model; 
      g_ctx = &ctx;
     
-    initializeModelAndContext(params, &model, &ctx, &ctx_guidance);
-    loadModelAndApplyLora(params, model, ctx, &ctx_guidance);
+    if (!initializeModelAndContext(params, &model, &ctx, &ctx_guidance)) {
+        return 1; 
+    }
+        
+    std::cout << "We are here" << std::endl;
 
     checkContextSize(params, ctx); 
 
@@ -157,7 +169,6 @@ int main(int argc, char** argv){
     int status = executeMainLoop(ctx, params, embd_inp, ctx_guidance, inp_pfx, inp_sfx, grammar, parsed_grammar);
 
     cleanupAndExit(ctx, params, model, input_tokens, output_ss, output_tokens, ctx_guidance, grammar);
-    
     return 0;
 
 }
