@@ -106,7 +106,7 @@ void initializeBackend(int numa);
  * @param ctx: Pointer to the primary context.
  * @param ctx_guidance: Pointer to the guidance context, if any.
  */
-bool initializeModelAndContext(const gpt_params& params, llama_model** model, llama_context** ctx, llama_context** ctx_guidance);
+bool initializeModelAndContext(gpt_params& params, llama_model** model, llama_context** ctx, llama_context** ctx_guidance);
 
 
 /**
@@ -126,15 +126,16 @@ void loadModelAndApplyLora(const gpt_params& params, llama_model* model, llama_c
  * @param params: Parameters that specify the desired context size.
  * @param ctx: Pointer to the primary context.
  */
-void checkContextSize(const gpt_params& params, llama_context* ctx);
+void checkContextSize(gpt_params& params, llama_context* ctx);
 
 
 /**
  * Logs system-related information, such as the number of threads in use.
  * 
  * @param params: Parameters that might contain system-related configurations.
+ *
  */
-void logSystemInfo(const gpt_params& params);
+void logSystemInfo(gpt_params& params);
 
 
 /**
@@ -152,7 +153,7 @@ void testMemoryUsage(const gpt_params& params, llama_context* ctx, llama_model* 
  * 
  * @param ctx: Pointer to the primary context.
  */
-void exportCgraph(llama_context* ctx);
+void exportCgraph(llama_context* ctx, llama_model *model);
 
 /**
  * Attempts to load a saved session from the provided path.
@@ -161,7 +162,7 @@ void exportCgraph(llama_context* ctx);
  * @param path_session: Path to the saved session file.
  * @return: A vector containing session tokens.
  */
-std::vector<llama_token> loadSavedSession(llama_context* ctx, const std::string& path_session);
+bool loadSavedSession(llama_context* ctx, gpt_params &params, const std::string& path_session, std::vector<llama_token> &session_tokens);
 
 
 /**
@@ -174,7 +175,7 @@ std::vector<llama_token> loadSavedSession(llama_context* ctx, const std::string&
  * @param add_bos: Flag to indicate if a beginning-of-sentence token should be added.
  * @return: A vector containing the main input tokens, either tokenized from the prompt or taken from the session.
  */
-std::vector<llama_token> initializeInput(llama_context* ctx, const gpt_params& params, std::vector<llama_token>* embd_inp, std::vector<llama_token>* session_tokens, bool add_bos);
+std::vector<llama_token> initializeInput(llama_context* ctx, const gpt_params& params, std::vector<llama_token> session_tokens, bool add_bos);
 
 
 /**
@@ -231,7 +232,7 @@ bool checkTokenLength(const std::vector<llama_token>& embd_inp, llama_context* c
  * @param session_tokens: The tokens from the loaded session.
  * @param embd_inp: The tokenized prompt.
  */
-void recalculateCachedLogits(std::vector<llama_token>& session_tokens, const std::vector<llama_token>& embd_inp);
+size_t recalculateCachedLogits(gpt_params &params, std::vector<llama_token>& session_tokens, const std::vector<llama_token>& embd_inp);
 
 
 /**
@@ -301,14 +302,14 @@ void logGenerationParams(llama_context* ctx, const gpt_params& params);
  * @param grammar_str: The grammar string to parse and set up.
  * @return: A pointer to the initialized grammar structure.
  */
-std::tuple<struct llama_grammar *,  grammar_parser::parse_state> setupGrammar(llama_context* ctx, const std::string& grammar_str);
+bool setupGrammar(llama_context* ctx, gpt_params &params, llama_grammar * grammar, grammar_parser::parse_state &parsed_grammar);
 
 /**
  * Sets up the details and messages for the interactive mode based on the given parameters.
  * 
  * @param params: The GPT parameters.
  */
-void setupInteractiveModeDetails(const gpt_params& params);
+bool setupInteractiveModeDetails(const gpt_params& params);
 
 /**
  * Initializes various vectors and variables needed for token management in the main loop.
