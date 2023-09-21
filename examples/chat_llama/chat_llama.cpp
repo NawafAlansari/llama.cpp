@@ -6,12 +6,14 @@ What is the plan?
     2) Make a small program that takes user input, and generates a conversation. (DONE);
     2.5) add colors using to conversation using the console library.(DONE) 
     3) If no token budget, handle until stopping; (DONE) 
-    4) Implement context swapping; 
+    4) Implement context swapping; (DONE)
     5) Implement applyPanalties for the candidates; (DONE)
     6) Implement applyLogitsBiasMap for the logits; (What is it ?)
-    7) Add diagnostics and testing runs; 
-    8) Allow adding prefix for the AI response (for example "AI: ")
-    
+    7) Add diagnostics and testing runs; (PENDING/TODO) 
+    8) Allow adding prefix for the AI response (i.e. "AI: ")
+    9) Allow for prompting, either through a file or a string argument. 
+    10) Redesign the code, refactor and clean up.
+    11) Test code plz. 
 
 */
 
@@ -23,7 +25,6 @@ What is the plan?
 #include <string> 
 #include <vector>
 #include <algorithm>
-
 
 
 struct inference_engine{
@@ -68,26 +69,29 @@ struct inference_engine{
     void addInputTokensToContext(){
         context_tokens.insert(context_tokens.end(), input_tokens.begin(), input_tokens.end());
         if (context_tokens.size() > params.n_ctx){
-            context_tokens.erase(context_tokens.begin(), context_tokens.begin() + context_tokens.size() - params.n_ctx);
+            context_tokens.erase(context_tokens.begin(), context_tokens.begin() + context_tokens.size() - params.n_ctx );
+
         }
     }
 
     void addNextTokenToContext(){
-        if (has_next_token){
+        if (has_next_token && next_token != eos){        
             context_tokens.push_back(next_token);
         }
+        
         if (context_tokens.size() > params.n_ctx){
             context_tokens.erase(context_tokens.begin());
+
         }
     }
 
 
     int evaluateModel(){
         int old_n_past = n_past;
-        n_past = context_tokens.size();
-        
+        n_past = std::min((int)context_tokens.size(), params.n_ctx)-1;
         int n_eval = context_tokens.size() - old_n_past;
-        
+
+
         return llama_eval(ctx, &context_tokens[old_n_past], n_eval, old_n_past, params.n_threads); 
         
 }
@@ -137,8 +141,9 @@ struct inference_engine{
 
 
     void updateLastOutputTokens(){
-        if (has_next_token){
+        if (has_next_token && next_token != eos){
             last_output_tokens.push_back(next_token);
+
         }
         if (last_output_tokens.size() > params.n_ctx){
             last_output_tokens.erase(last_output_tokens.begin());
@@ -166,8 +171,6 @@ struct inference_engine{
         llama_token_data_array candidates_p = {candidates.data(), candidates.size(), false}; 
         applyPenalties(&candidates_p);
         sampleNextToken(&candidates_p);
-        updateLastOutputTokens();
-        
         return;  
 
     }
@@ -179,7 +182,12 @@ struct inference_engine{
     std::string complete(){
         getNextToken(); 
         updateHasNextToken();
+        
         addNextTokenToContext();
+        updateLastOutputTokens();
+        
+        
+
         return llama_token_to_piece(ctx, next_token);
         
     }
@@ -193,9 +201,11 @@ void readUserInput(std::string &user_input, bool multiline_input){
     return; 
 }
 
-std::string streamResponse(inference_engine engine){   
+std::string streamResponse(inference_engine &engine){   
     std::ostringstream output_ss;
-    
+    //TODO: THis seems ugly, but it works for now.
+    engine.has_next_token = true;
+
     while(engine.has_next_token){        
         std::string token_text = engine.complete();     
         
@@ -218,6 +228,7 @@ std::string getUserInput(){
 }
 
 
+
 int main(int argc, char** argv){
     gpt_params params; 
     if (!gpt_params_parse(argc, argv, params)){
@@ -238,6 +249,11 @@ int main(int argc, char** argv){
         readUserInput(user_input, params.multiline_input);
         engine.tokenizeInput(user_input.c_str());
         conversation += streamResponse(engine);
+
+        std::cout << std::endl;
+        LOG_TEE("input length: %d\n", engine.input_tokens.size());
+        LOG_TEE("context length: %d\n", engine.context_tokens.size());
+        LOG_TEE("last output length: %d\n", engine.last_output_tokens.size());
         
         std::cout << std::endl;
     }
