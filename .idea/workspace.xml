@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Release" ENABLED="true" GENERATION_DIR="." CONFIG_NAME="Release" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="91c35840-f38e-4ea8-aa30-9c3d4892c3a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/baby-llama" beforeDir="false" afterPath="$PROJECT_DIR$/bin/baby-llama" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/beam-search" beforeDir="false" afterPath="$PROJECT_DIR$/bin/beam-search" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/benchmark" beforeDir="false" afterPath="$PROJECT_DIR$/bin/benchmark" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/convert-llama2c-to-ggml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/convert-llama2c-to-ggml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/embd-input-test" beforeDir="false" afterPath="$PROJECT_DIR$/bin/embd-input-test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/embedding" beforeDir="false" afterPath="$PROJECT_DIR$/bin/embedding" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/llama-bench" beforeDir="false" afterPath="$PROJECT_DIR$/bin/llama-bench" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/modular_main" beforeDir="false" afterPath="$PROJECT_DIR$/bin/modular_main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/perplexity" beforeDir="false" afterPath="$PROJECT_DIR$/bin/perplexity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/q8dot" beforeDir="false" afterPath="$PROJECT_DIR$/bin/q8dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/quantize" beforeDir="false" afterPath="$PROJECT_DIR$/bin/quantize" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/quantize-stats" beforeDir="false" afterPath="$PROJECT_DIR$/bin/quantize-stats" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/save-load-state" beforeDir="false" afterPath="$PROJECT_DIR$/bin/save-load-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/server" beforeDir="false" afterPath="$PROJECT_DIR$/bin/server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/simple" beforeDir="false" afterPath="$PROJECT_DIR$/bin/simple" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/speculative" beforeDir="false" afterPath="$PROJECT_DIR$/bin/speculative" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-grad0" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-grad0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-grammar-parser" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-grammar-parser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-llama-grammar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-llama-grammar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-quantize-fns" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-quantize-fns" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-quantize-perf" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-quantize-perf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-sampling" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-sampling" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-tokenizer-0-falcon" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-tokenizer-0-falcon" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-tokenizer-0-llama" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-tokenizer-0-llama" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test-tokenizer-1" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test-tokenizer-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/train-text-from-scratch" beforeDir="false" afterPath="$PROJECT_DIR$/bin/train-text-from-scratch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/vdot" beforeDir="false" afterPath="$PROJECT_DIR$/bin/vdot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/modular_main/helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/modular_main/helpers.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/modular_main/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/examples/modular_main/helpers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/modular_main/modular_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/modular_main/modular_main.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="2.1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2VGggR7g0YvRmFmSH9xmLcPrEMX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;refactoring__main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="91c35840-f38e-4ea8-aa30-9c3d4892c3a5" name="Changes" comment="" />
+      <created>1694467943271</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694467943271</updated>
+      <workItem from="1694467945189" duration="3241000" />
+      <workItem from="1694472405913" duration="3503000" />
+      <workItem from="1694559488548" duration="1338000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+</project>

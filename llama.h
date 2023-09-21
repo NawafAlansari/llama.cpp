@@ -290,9 +290,11 @@ extern "C" {
                                  int   n_threads);
 
     // Returns the number of tokens in the KV cache
+    //TODO: What is the KV cache?
     LLAMA_API int llama_get_kv_cache_token_count(const struct llama_context * ctx);
 
     // Sets the current rng seed.
+    //TODO: What is the rng seed?
     LLAMA_API void llama_set_rng_seed(struct llama_context * ctx, uint32_t seed);
 
     // Returns the maximum size in bytes of the state (rng, logits, embedding
