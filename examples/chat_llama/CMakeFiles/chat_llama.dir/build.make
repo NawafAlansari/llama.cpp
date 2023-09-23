@@ -83,9 +83,54 @@ examples/chat_llama/CMakeFiles/chat_llama.dir/chat_llama.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_llama.dir/chat_llama.cpp.s"
 	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/chat_llama.cpp -o CMakeFiles/chat_llama.dir/chat_llama.cpp.s
 
+examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o: examples/chat_llama/CMakeFiles/chat_llama.dir/flags.make
+examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o: examples/chat_llama/controllers.cpp
+examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o: examples/chat_llama/CMakeFiles/chat_llama.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o -MF CMakeFiles/chat_llama.dir/controllers.cpp.o.d -o CMakeFiles/chat_llama.dir/controllers.cpp.o -c /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/controllers.cpp
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chat_llama.dir/controllers.cpp.i"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/controllers.cpp > CMakeFiles/chat_llama.dir/controllers.cpp.i
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_llama.dir/controllers.cpp.s"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/controllers.cpp -o CMakeFiles/chat_llama.dir/controllers.cpp.s
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o: examples/chat_llama/CMakeFiles/chat_llama.dir/flags.make
+examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o: examples/chat_llama/inference.cpp
+examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o: examples/chat_llama/CMakeFiles/chat_llama.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o -MF CMakeFiles/chat_llama.dir/inference.cpp.o.d -o CMakeFiles/chat_llama.dir/inference.cpp.o -c /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/inference.cpp
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chat_llama.dir/inference.cpp.i"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/inference.cpp > CMakeFiles/chat_llama.dir/inference.cpp.i
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_llama.dir/inference.cpp.s"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/inference.cpp -o CMakeFiles/chat_llama.dir/inference.cpp.s
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.o: examples/chat_llama/CMakeFiles/chat_llama.dir/flags.make
+examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.o: examples/chat_llama/CLIView.cpp
+examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.o: examples/chat_llama/CMakeFiles/chat_llama.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.o"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.o -MF CMakeFiles/chat_llama.dir/CLIView.cpp.o.d -o CMakeFiles/chat_llama.dir/CLIView.cpp.o -c /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CLIView.cpp
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chat_llama.dir/CLIView.cpp.i"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CLIView.cpp > CMakeFiles/chat_llama.dir/CLIView.cpp.i
+
+examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chat_llama.dir/CLIView.cpp.s"
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CLIView.cpp -o CMakeFiles/chat_llama.dir/CLIView.cpp.s
+
 # Object files for target chat_llama
 chat_llama_OBJECTS = \
-"CMakeFiles/chat_llama.dir/chat_llama.cpp.o"
+"CMakeFiles/chat_llama.dir/chat_llama.cpp.o" \
+"CMakeFiles/chat_llama.dir/controllers.cpp.o" \
+"CMakeFiles/chat_llama.dir/inference.cpp.o" \
+"CMakeFiles/chat_llama.dir/CLIView.cpp.o"
 
 # External object files for target chat_llama
 chat_llama_EXTERNAL_OBJECTS = \
@@ -94,13 +139,16 @@ chat_llama_EXTERNAL_OBJECTS = \
 "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/CMakeFiles/common.dir/grammar-parser.cpp.o"
 
 bin/chat_llama: examples/chat_llama/CMakeFiles/chat_llama.dir/chat_llama.cpp.o
+bin/chat_llama: examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o
+bin/chat_llama: examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o
+bin/chat_llama: examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.o
 bin/chat_llama: common/CMakeFiles/common.dir/common.cpp.o
 bin/chat_llama: common/CMakeFiles/common.dir/console.cpp.o
 bin/chat_llama: common/CMakeFiles/common.dir/grammar-parser.cpp.o
 bin/chat_llama: examples/chat_llama/CMakeFiles/chat_llama.dir/build.make
 bin/chat_llama: libllama.a
 bin/chat_llama: examples/chat_llama/CMakeFiles/chat_llama.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../bin/chat_llama"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../../bin/chat_llama"
 	cd /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/chat_llama.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

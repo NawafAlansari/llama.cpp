@@ -1,0 +1,7 @@
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CMakeFiles/chat_llama.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CMakeFiles/edit_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CMakeFiles/rebuild_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CMakeFiles/list_install_components.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CMakeFiles/install.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CMakeFiles/install/local.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/chat_llama/CMakeFiles/install/strip.dir

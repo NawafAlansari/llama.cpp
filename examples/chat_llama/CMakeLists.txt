@@ -1,5 +1,6 @@
 set(TARGET chat_llama)
-add_executable(${TARGET} chat_llama.cpp)
+set (SOURCE_FILES chat_llama.cpp controllers.cpp inference.cpp CLIView.cpp)
+add_executable(${TARGET} ${SOURCE_FILES})
 install(TARGETS ${TARGET} RUNTIME)
 target_link_libraries(${TARGET} PRIVATE common llama ${CMAKE_THREAD_LIBS_INIT})
 target_compile_features(${TARGET} PRIVATE cxx_std_11)

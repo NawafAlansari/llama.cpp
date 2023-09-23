@@ -552,7 +552,7 @@ CMakeFiles/BUILD_INFO.dir/clean:
 CMakeFiles/ggml.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ggml.dir/build.make CMakeFiles/ggml.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ggml.dir/build.make CMakeFiles/ggml.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=21,22,23 "Built target ggml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=24,25,26 "Built target ggml"
 .PHONY : CMakeFiles/ggml.dir/all
 
 # Build rule for subdir invocation for target.
@@ -578,7 +578,7 @@ CMakeFiles/ggml.dir/clean:
 CMakeFiles/ggml_static.dir/all: CMakeFiles/ggml.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ggml_static.dir/build.make CMakeFiles/ggml_static.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ggml_static.dir/build.make CMakeFiles/ggml_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=24 "Built target ggml_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=27 "Built target ggml_static"
 .PHONY : CMakeFiles/ggml_static.dir/all
 
 # Build rule for subdir invocation for target.
@@ -604,7 +604,7 @@ CMakeFiles/ggml_static.dir/clean:
 CMakeFiles/llama.dir/all: CMakeFiles/ggml.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llama.dir/build.make CMakeFiles/llama.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llama.dir/build.make CMakeFiles/llama.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=25,26 "Built target llama"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=28,29 "Built target llama"
 .PHONY : CMakeFiles/llama.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1359,7 +1359,7 @@ common/CMakeFiles/common.dir/all: CMakeFiles/ggml.dir/all
 common/CMakeFiles/common.dir/all: CMakeFiles/llama.dir/all
 	$(MAKE) $(MAKESILENT) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/depend
 	$(MAKE) $(MAKESILENT) -f common/CMakeFiles/common.dir/build.make common/CMakeFiles/common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=10,11,12 "Built target common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=13,14,15 "Built target common"
 .PHONY : common/CMakeFiles/common.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1387,7 +1387,7 @@ tests/CMakeFiles/test-quantize-fns.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-quantize-fns.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-quantize-fns.dir/build.make tests/CMakeFiles/test-quantize-fns.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-quantize-fns.dir/build.make tests/CMakeFiles/test-quantize-fns.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=55,56 "Built target test-quantize-fns"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=58,59 "Built target test-quantize-fns"
 .PHONY : tests/CMakeFiles/test-quantize-fns.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1415,7 +1415,7 @@ tests/CMakeFiles/test-quantize-perf.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-quantize-perf.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-quantize-perf.dir/build.make tests/CMakeFiles/test-quantize-perf.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-quantize-perf.dir/build.make tests/CMakeFiles/test-quantize-perf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=57,58 "Built target test-quantize-perf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=60,61 "Built target test-quantize-perf"
 .PHONY : tests/CMakeFiles/test-quantize-perf.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1443,7 +1443,7 @@ tests/CMakeFiles/test-sampling.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-sampling.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-sampling.dir/build.make tests/CMakeFiles/test-sampling.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-sampling.dir/build.make tests/CMakeFiles/test-sampling.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=59,60 "Built target test-sampling"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=62,63 "Built target test-sampling"
 .PHONY : tests/CMakeFiles/test-sampling.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1471,7 +1471,7 @@ tests/CMakeFiles/test-tokenizer-0-llama.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-tokenizer-0-llama.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-tokenizer-0-llama.dir/build.make tests/CMakeFiles/test-tokenizer-0-llama.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-tokenizer-0-llama.dir/build.make tests/CMakeFiles/test-tokenizer-0-llama.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=63,64 "Built target test-tokenizer-0-llama"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=66,67 "Built target test-tokenizer-0-llama"
 .PHONY : tests/CMakeFiles/test-tokenizer-0-llama.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1499,7 +1499,7 @@ tests/CMakeFiles/test-tokenizer-0-falcon.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-tokenizer-0-falcon.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-tokenizer-0-falcon.dir/build.make tests/CMakeFiles/test-tokenizer-0-falcon.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-tokenizer-0-falcon.dir/build.make tests/CMakeFiles/test-tokenizer-0-falcon.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=61,62 "Built target test-tokenizer-0-falcon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=64,65 "Built target test-tokenizer-0-falcon"
 .PHONY : tests/CMakeFiles/test-tokenizer-0-falcon.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1527,7 +1527,7 @@ tests/CMakeFiles/test-tokenizer-1.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-tokenizer-1.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-tokenizer-1.dir/build.make tests/CMakeFiles/test-tokenizer-1.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-tokenizer-1.dir/build.make tests/CMakeFiles/test-tokenizer-1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=65,66 "Built target test-tokenizer-1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=68,69 "Built target test-tokenizer-1"
 .PHONY : tests/CMakeFiles/test-tokenizer-1.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1555,7 +1555,7 @@ tests/CMakeFiles/test-grammar-parser.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-grammar-parser.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-grammar-parser.dir/build.make tests/CMakeFiles/test-grammar-parser.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-grammar-parser.dir/build.make tests/CMakeFiles/test-grammar-parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=51,52 "Built target test-grammar-parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=54,55 "Built target test-grammar-parser"
 .PHONY : tests/CMakeFiles/test-grammar-parser.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1583,7 +1583,7 @@ tests/CMakeFiles/test-llama-grammar.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-llama-grammar.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-llama-grammar.dir/build.make tests/CMakeFiles/test-llama-grammar.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-llama-grammar.dir/build.make tests/CMakeFiles/test-llama-grammar.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=53,54 "Built target test-llama-grammar"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=56,57 "Built target test-llama-grammar"
 .PHONY : tests/CMakeFiles/test-llama-grammar.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1611,7 +1611,7 @@ tests/CMakeFiles/test-grad0.dir/all: CMakeFiles/llama.dir/all
 tests/CMakeFiles/test-grad0.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-grad0.dir/build.make tests/CMakeFiles/test-grad0.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-grad0.dir/build.make tests/CMakeFiles/test-grad0.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=49,50 "Built target test-grad0"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=52,53 "Built target test-grad0"
 .PHONY : tests/CMakeFiles/test-grad0.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1638,7 +1638,7 @@ tests/CMakeFiles/test-c.dir/all: CMakeFiles/ggml.dir/all
 tests/CMakeFiles/test-c.dir/all: CMakeFiles/llama.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-c.dir/build.make tests/CMakeFiles/test-c.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test-c.dir/build.make tests/CMakeFiles/test-c.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=47,48 "Built target test-c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=50,51 "Built target test-c"
 .PHONY : tests/CMakeFiles/test-c.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1667,7 +1667,7 @@ examples/main/CMakeFiles/main.dir/all: CMakeFiles/llama.dir/all
 examples/main/CMakeFiles/main.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/main/CMakeFiles/main.dir/build.make examples/main/CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/main/CMakeFiles/main.dir/build.make examples/main/CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=29,30 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=32,33 "Built target main"
 .PHONY : examples/main/CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1695,7 +1695,7 @@ examples/quantize/CMakeFiles/quantize.dir/all: CMakeFiles/ggml.dir/all
 examples/quantize/CMakeFiles/quantize.dir/all: CMakeFiles/llama.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/quantize/CMakeFiles/quantize.dir/build.make examples/quantize/CMakeFiles/quantize.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/quantize/CMakeFiles/quantize.dir/build.make examples/quantize/CMakeFiles/quantize.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=35,36 "Built target quantize"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=38,39 "Built target quantize"
 .PHONY : examples/quantize/CMakeFiles/quantize.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1722,7 +1722,7 @@ examples/quantize-stats/CMakeFiles/quantize-stats.dir/all: CMakeFiles/ggml.dir/a
 examples/quantize-stats/CMakeFiles/quantize-stats.dir/all: CMakeFiles/llama.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/quantize-stats/CMakeFiles/quantize-stats.dir/build.make examples/quantize-stats/CMakeFiles/quantize-stats.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/quantize-stats/CMakeFiles/quantize-stats.dir/build.make examples/quantize-stats/CMakeFiles/quantize-stats.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=37,38 "Built target quantize-stats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=40,41 "Built target quantize-stats"
 .PHONY : examples/quantize-stats/CMakeFiles/quantize-stats.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1751,7 +1751,7 @@ examples/perplexity/CMakeFiles/perplexity.dir/all: CMakeFiles/llama.dir/all
 examples/perplexity/CMakeFiles/perplexity.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/perplexity/CMakeFiles/perplexity.dir/build.make examples/perplexity/CMakeFiles/perplexity.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/perplexity/CMakeFiles/perplexity.dir/build.make examples/perplexity/CMakeFiles/perplexity.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=31,32 "Built target perplexity"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=34,35 "Built target perplexity"
 .PHONY : examples/perplexity/CMakeFiles/perplexity.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1780,7 +1780,7 @@ examples/embedding/CMakeFiles/embedding.dir/all: CMakeFiles/llama.dir/all
 examples/embedding/CMakeFiles/embedding.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/embedding/CMakeFiles/embedding.dir/build.make examples/embedding/CMakeFiles/embedding.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/embedding/CMakeFiles/embedding.dir/build.make examples/embedding/CMakeFiles/embedding.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=19,20 "Built target embedding"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=22,23 "Built target embedding"
 .PHONY : examples/embedding/CMakeFiles/embedding.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1809,7 +1809,7 @@ examples/save-load-state/CMakeFiles/save-load-state.dir/all: CMakeFiles/llama.di
 examples/save-load-state/CMakeFiles/save-load-state.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/save-load-state/CMakeFiles/save-load-state.dir/build.make examples/save-load-state/CMakeFiles/save-load-state.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/save-load-state/CMakeFiles/save-load-state.dir/build.make examples/save-load-state/CMakeFiles/save-load-state.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=39,40 "Built target save-load-state"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=42,43 "Built target save-load-state"
 .PHONY : examples/save-load-state/CMakeFiles/save-load-state.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1894,7 +1894,7 @@ examples/train-text-from-scratch/CMakeFiles/train-text-from-scratch.dir/all: CMa
 examples/train-text-from-scratch/CMakeFiles/train-text-from-scratch.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/train-text-from-scratch/CMakeFiles/train-text-from-scratch.dir/build.make examples/train-text-from-scratch/CMakeFiles/train-text-from-scratch.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/train-text-from-scratch/CMakeFiles/train-text-from-scratch.dir/build.make examples/train-text-from-scratch/CMakeFiles/train-text-from-scratch.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=67,68 "Built target train-text-from-scratch"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=70,71 "Built target train-text-from-scratch"
 .PHONY : examples/train-text-from-scratch/CMakeFiles/train-text-from-scratch.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1922,7 +1922,7 @@ examples/convert-llama2c-to-ggml/CMakeFiles/convert-llama2c-to-ggml.dir/all: CMa
 examples/convert-llama2c-to-ggml/CMakeFiles/convert-llama2c-to-ggml.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/convert-llama2c-to-ggml/CMakeFiles/convert-llama2c-to-ggml.dir/build.make examples/convert-llama2c-to-ggml/CMakeFiles/convert-llama2c-to-ggml.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/convert-llama2c-to-ggml/CMakeFiles/convert-llama2c-to-ggml.dir/build.make examples/convert-llama2c-to-ggml/CMakeFiles/convert-llama2c-to-ggml.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=13,14 "Built target convert-llama2c-to-ggml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=16,17 "Built target convert-llama2c-to-ggml"
 .PHONY : examples/convert-llama2c-to-ggml/CMakeFiles/convert-llama2c-to-ggml.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1951,7 +1951,7 @@ examples/simple/CMakeFiles/simple.dir/all: CMakeFiles/llama.dir/all
 examples/simple/CMakeFiles/simple.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/simple/CMakeFiles/simple.dir/build.make examples/simple/CMakeFiles/simple.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/simple/CMakeFiles/simple.dir/build.make examples/simple/CMakeFiles/simple.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=43,44 "Built target simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=46,47 "Built target simple"
 .PHONY : examples/simple/CMakeFiles/simple.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1980,7 +1980,7 @@ examples/speculative/CMakeFiles/speculative.dir/all: CMakeFiles/llama.dir/all
 examples/speculative/CMakeFiles/speculative.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/speculative/CMakeFiles/speculative.dir/build.make examples/speculative/CMakeFiles/speculative.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/speculative/CMakeFiles/speculative.dir/build.make examples/speculative/CMakeFiles/speculative.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=45,46 "Built target speculative"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=48,49 "Built target speculative"
 .PHONY : examples/speculative/CMakeFiles/speculative.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2009,7 +2009,7 @@ examples/embd-input/CMakeFiles/embdinput.dir/all: CMakeFiles/llama.dir/all
 examples/embd-input/CMakeFiles/embdinput.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/embd-input/CMakeFiles/embdinput.dir/build.make examples/embd-input/CMakeFiles/embdinput.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/embd-input/CMakeFiles/embdinput.dir/build.make examples/embd-input/CMakeFiles/embdinput.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=17,18 "Built target embdinput"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=20,21 "Built target embdinput"
 .PHONY : examples/embd-input/CMakeFiles/embdinput.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2039,7 +2039,7 @@ examples/embd-input/CMakeFiles/embd-input-test.dir/all: common/CMakeFiles/common
 examples/embd-input/CMakeFiles/embd-input-test.dir/all: examples/embd-input/CMakeFiles/embdinput.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/embd-input/CMakeFiles/embd-input-test.dir/build.make examples/embd-input/CMakeFiles/embd-input-test.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/embd-input/CMakeFiles/embd-input-test.dir/build.make examples/embd-input/CMakeFiles/embd-input-test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=15,16 "Built target embd-input-test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=18,19 "Built target embd-input-test"
 .PHONY : examples/embd-input/CMakeFiles/embd-input-test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2068,7 +2068,7 @@ examples/llama-bench/CMakeFiles/llama-bench.dir/all: CMakeFiles/llama.dir/all
 examples/llama-bench/CMakeFiles/llama-bench.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/llama-bench/CMakeFiles/llama-bench.dir/build.make examples/llama-bench/CMakeFiles/llama-bench.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/llama-bench/CMakeFiles/llama-bench.dir/build.make examples/llama-bench/CMakeFiles/llama-bench.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=27,28 "Built target llama-bench"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=30,31 "Built target llama-bench"
 .PHONY : examples/llama-bench/CMakeFiles/llama-bench.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2126,12 +2126,12 @@ examples/chat_llama/CMakeFiles/chat_llama.dir/all: CMakeFiles/llama.dir/all
 examples/chat_llama/CMakeFiles/chat_llama.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=8,9 "Built target chat_llama"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=8,9,10,11,12 "Built target chat_llama"
 .PHONY : examples/chat_llama/CMakeFiles/chat_llama.dir/all
 
 # Build rule for subdir invocation for target.
 examples/chat_llama/CMakeFiles/chat_llama.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/chat_llama/CMakeFiles/chat_llama.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles 0
 .PHONY : examples/chat_llama/CMakeFiles/chat_llama.dir/rule
@@ -2155,7 +2155,7 @@ examples/server/CMakeFiles/server.dir/all: CMakeFiles/llama.dir/all
 examples/server/CMakeFiles/server.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/server/CMakeFiles/server.dir/build.make examples/server/CMakeFiles/server.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/server/CMakeFiles/server.dir/build.make examples/server/CMakeFiles/server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=41,42 "Built target server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=44,45 "Built target server"
 .PHONY : examples/server/CMakeFiles/server.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2183,7 +2183,7 @@ pocs/vdot/CMakeFiles/vdot.dir/all: CMakeFiles/llama.dir/all
 pocs/vdot/CMakeFiles/vdot.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f pocs/vdot/CMakeFiles/vdot.dir/build.make pocs/vdot/CMakeFiles/vdot.dir/depend
 	$(MAKE) $(MAKESILENT) -f pocs/vdot/CMakeFiles/vdot.dir/build.make pocs/vdot/CMakeFiles/vdot.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=69,70 "Built target vdot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=72,73 "Built target vdot"
 .PHONY : pocs/vdot/CMakeFiles/vdot.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2211,7 +2211,7 @@ pocs/vdot/CMakeFiles/q8dot.dir/all: CMakeFiles/llama.dir/all
 pocs/vdot/CMakeFiles/q8dot.dir/all: common/CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f pocs/vdot/CMakeFiles/q8dot.dir/build.make pocs/vdot/CMakeFiles/q8dot.dir/depend
 	$(MAKE) $(MAKESILENT) -f pocs/vdot/CMakeFiles/q8dot.dir/build.make pocs/vdot/CMakeFiles/q8dot.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=33,34 "Built target q8dot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles --progress-num=36,37 "Built target q8dot"
 .PHONY : pocs/vdot/CMakeFiles/q8dot.dir/all
 
 # Build rule for subdir invocation for target.

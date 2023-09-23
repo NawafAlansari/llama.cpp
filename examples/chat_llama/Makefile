@@ -185,6 +185,30 @@ chat_llama/fast:
 	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/build
 .PHONY : chat_llama/fast
 
+CLIView.o: CLIView.cpp.o
+.PHONY : CLIView.o
+
+# target to build an object file
+CLIView.cpp.o:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.o
+.PHONY : CLIView.cpp.o
+
+CLIView.i: CLIView.cpp.i
+.PHONY : CLIView.i
+
+# target to preprocess a source file
+CLIView.cpp.i:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.i
+.PHONY : CLIView.cpp.i
+
+CLIView.s: CLIView.cpp.s
+.PHONY : CLIView.s
+
+# target to generate assembly for a file
+CLIView.cpp.s:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/CLIView.cpp.s
+.PHONY : CLIView.cpp.s
+
 chat_llama.o: chat_llama.cpp.o
 .PHONY : chat_llama.o
 
@@ -209,6 +233,54 @@ chat_llama.cpp.s:
 	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/chat_llama.cpp.s
 .PHONY : chat_llama.cpp.s
 
+controllers.o: controllers.cpp.o
+.PHONY : controllers.o
+
+# target to build an object file
+controllers.cpp.o:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o
+.PHONY : controllers.cpp.o
+
+controllers.i: controllers.cpp.i
+.PHONY : controllers.i
+
+# target to preprocess a source file
+controllers.cpp.i:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.i
+.PHONY : controllers.cpp.i
+
+controllers.s: controllers.cpp.s
+.PHONY : controllers.s
+
+# target to generate assembly for a file
+controllers.cpp.s:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.s
+.PHONY : controllers.cpp.s
+
+inference.o: inference.cpp.o
+.PHONY : inference.o
+
+# target to build an object file
+inference.cpp.o:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o
+.PHONY : inference.cpp.o
+
+inference.i: inference.cpp.i
+.PHONY : inference.i
+
+# target to preprocess a source file
+inference.cpp.i:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.i
+.PHONY : inference.cpp.i
+
+inference.s: inference.cpp.s
+.PHONY : inference.s
+
+# target to generate assembly for a file
+inference.cpp.s:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/chat_llama/CMakeFiles/chat_llama.dir/build.make examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.s
+.PHONY : inference.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -223,9 +295,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... chat_llama"
+	@echo "... CLIView.o"
+	@echo "... CLIView.i"
+	@echo "... CLIView.s"
 	@echo "... chat_llama.o"
 	@echo "... chat_llama.i"
 	@echo "... chat_llama.s"
+	@echo "... controllers.o"
+	@echo "... controllers.i"
+	@echo "... controllers.s"
+	@echo "... inference.o"
+	@echo "... inference.i"
+	@echo "... inference.s"
 .PHONY : help
 
 
