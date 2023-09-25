@@ -1,4 +1,8 @@
 #include "inference.h"
+#include <fstream> 
+#include <sstream> 
+#include <istream>
+#include <iterator>
 
 InferenceEngine::InferenceEngine(gpt_params params)
 {
@@ -14,33 +18,103 @@ InferenceEngine::InferenceEngine(gpt_params params)
 
 void InferenceEngine::tokenizeInput(const char *text)
 {
-    input_tokens = ::llama_tokenize(ctx, text, add_bos); 
+    input_tokens = ::llama_tokenize(ctx, text, add_bos);
     addInputTokensToContext(); 
 }
 
-std::string InferenceEngine::complete()
-{
+std::string InferenceEngine::getNextTokenText()
+{      
     getNextToken(); 
     updateHasNextToken();
-        
-    addNextTokenToContext();
-    updateLastOutputTokens();
+
+    if (has_next_token){ 
+        addNextTokenToContext();
+        updateLastOutputTokens();
+    }
+    else {
+
+    }
         
     return llama_token_to_piece(ctx, next_token);
 }
 
-void InferenceEngine::addInputTokensToContext()
-{
-    context_tokens.insert(context_tokens.end(), input_tokens.begin(), input_tokens.end());
-        if (context_tokens.size() > params.n_ctx){
-            context_tokens.erase(context_tokens.begin(), context_tokens.begin() + context_tokens.size() - params.n_ctx );
+std::string InferenceEngine::serialize()
+{   
+    //Serialize context_tokens
+    std::ostringstream oss;
+    for(auto token: context_tokens){
+        oss << token << " ";
+    }
+    oss << "\n";
 
+    // Serialize input_tokens
+    for (auto token: input_tokens){
+        oss << token << " ";
+    }
+
+    oss << "\n";
+
+    // Serialize last_output_tokens
+    for (auto token: last_output_tokens){
+        oss << token << " ";
+    }
+    oss << "\n";
+
+    // Serialize other simple types
+    oss << next_token << "\n";
+    oss << n_past << "\n";
+    oss << n_vocab << "\n";
+    oss << eos << "\n";
+    oss << add_bos << "\n";
+    oss << has_next_token << "\n";
+
+    return oss.str(); 
+}
+
+void InferenceEngine::deserialize(const std::string &serializedState)
+{
+    std::istringstream iss(serializedState);
+    std::string line;
+
+    // Deserialize context_tokens
+    std::getline(iss, line);
+    std::istringstream context_stream(line);
+    context_tokens.clear();
+    std::copy(std::istream_iterator<int>(context_stream), std::istream_iterator<int>(), std::back_inserter(context_tokens));
+
+    // Deserialize input_tokens
+    std::getline(iss, line);
+    std::istringstream input_stream(line);
+    input_tokens.clear();
+    std::copy(std::istream_iterator<int>(input_stream), std::istream_iterator<int>(), std::back_inserter(input_tokens));
+
+    // Deserialize last_output_tokens
+    std::getline(iss, line);
+    std::istringstream last_output_stream(line);
+    last_output_tokens.clear();
+    std::copy(std::istream_iterator<int>(last_output_stream), std::istream_iterator<int>(), std::back_inserter(last_output_tokens));
+
+    // Deserialize other simple types
+    std::getline(iss, line); next_token = std::stoi(line);
+    std::getline(iss, line); n_past = std::stoi(line);
+    std::getline(iss, line); n_vocab = std::stoi(line);
+    std::getline(iss, line); eos = std::stoi(line);
+    std::getline(iss, line); add_bos = std::stoi(line);
+    std::getline(iss, line); has_next_token = std::stoi(line);
+}
+
+void InferenceEngine::addInputTokensToContext()
+{   
+    context_tokens.insert(context_tokens.end(), input_tokens.begin(), input_tokens.end());
+
+        if (context_tokens.size() >= params.n_ctx){
+            context_tokens.erase(context_tokens.begin(), context_tokens.begin() + context_tokens.size() - params.n_ctx);
         }
 }
 
 void InferenceEngine::addNextTokenToContext()
 {
-    if (has_next_token && next_token != eos){        
+    if (has_next_token){        
             context_tokens.push_back(next_token);
         }
         
@@ -52,7 +126,7 @@ void InferenceEngine::addNextTokenToContext()
 
 void InferenceEngine::updateLastOutputTokens()
 {
-    if (has_next_token && next_token != eos){
+    if (has_next_token){
             last_output_tokens.push_back(next_token);
 
         }
@@ -63,7 +137,13 @@ void InferenceEngine::updateLastOutputTokens()
 
 void InferenceEngine::updateHasNextToken()
 {
-    has_next_token = (next_token != eos);
+    if (next_token == eos){
+            has_next_token = false;
+            next_token = -1; 
+        }
+    else{
+            has_next_token = true;
+    }
 
 }
 
@@ -144,4 +224,49 @@ void InferenceEngine::getNextToken()
     applyPenalties(&candidates_p);
     sampleNextToken(&candidates_p);
     return;  
+}
+
+SessionManager::SessionManager()
+{
+}
+
+SessionManager::~SessionManager()
+{
+}
+
+
+bool SessionManager::saveSession(InferenceEngine &engine, const std::string &filePath){
+    std::string selializedState = serialize(engine);
+    std::ofstream outFile(filePath); 
+    if (!outFile.is_open()){
+        return false; 
+    }
+    outFile << selializedState;
+    outFile.close();
+    return true;
+}
+
+bool SessionManager::loadSession(InferenceEngine &engine, const std::string &filePath){
+    std::ifstream inFile(filePath); 
+    if (!inFile.is_open()){
+        return false; 
+    }
+    std::stringstream buffer; 
+    buffer << inFile.rdbuf();
+    std::string serializedState = buffer.str();
+    inFile.close(); 
+
+    deserialize(serializedState, engine);
+    return true; 
+}
+
+std::string SessionManager::serialize(InferenceEngine &engine){
+     std::string serializedState = engine.serialize(); 
+     return serializedState;
+
+}
+
+void SessionManager::deserialize(const std::string &serializedState, InferenceEngine &engine)
+{
+    engine.deserialize(serializedState);
 }

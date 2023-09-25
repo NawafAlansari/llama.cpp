@@ -34,3 +34,9 @@ void CLIView::initChatView(bool simple_io, bool use_color){
     console::init(simple_io, use_color);
     return; 
 }
+
+void CLIView::cleanChatView()
+{
+    console::cleanup(); 
+    return; 
+}

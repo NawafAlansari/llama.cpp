@@ -12,8 +12,11 @@ class InferenceEngine {
 public: 
     InferenceEngine(gpt_params params); 
     void tokenizeInput(const char *text);
-    std::string complete();  
-    
+    std::string getNextTokenText();
+
+    std::string serialize(); 
+    void deserialize(const std::string &serializedState);
+
     bool has_next_token; 
     //TODO: build the interface for the inference engine
 
@@ -51,4 +54,24 @@ private:
 };
 
 
+class  SessionManager{
+public:
+    SessionManager();
+    ~SessionManager();
+
+    bool saveSession(InferenceEngine &engine, const std::string &filePath);
+    bool loadSession(InferenceEngine &engine, const std::string &filePath);
+
+
+private: 
+    std::string serialize(InferenceEngine &engine);
+    void deserialize(const std::string &serializedState, InferenceEngine &engine);
+
+    
+
+}; 
+
+
 #endif // INFERENCE_H_
+
+
