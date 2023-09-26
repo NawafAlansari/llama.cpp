@@ -4,10 +4,54 @@
 #include "inference.h"
 #include "CLIView.h"
 
-class ChatController{
+#include <stack> 
+
+
+class IController {
+public:
+    virtual void run() = 0;
+    virtual ~IController() {} 
+};
+
+
+
+class ApplicationController: public IController{
+public: 
+    ApplicationController(); 
+    void run() override;
+
+private: 
+    bool running = true;
+
+}; 
+
+
+
+
+class ChatListController: public IController{
+public: 
+    ChatListController(); 
+    void run() override; 
+
+
+private: 
+    ChatModel chatModel; 
+    ChatListView chatListView;
+    void getCommand(std::string &commandBuffer); 
+    void executeCommand(std::string &command);
+    char getNavigationInput();
+    void handleNavigationInput(int selected_chat);
+    void cleanCommand(std::string &command);
+    void startNewChat(int argc, char **argv);
+
+    bool inCommandMode = false; 
+}; 
+
+
+class ChatController: public IController{
 public:
     ChatController(gpt_params params);
-    void runChat();
+    void run() override;
     
     gpt_params params; 
     SessionManager session;

@@ -54,6 +54,26 @@ private:
 };
 
 
+
+struct ChatSessionState{
+    std::string name; 
+    std::string timestamp; 
+    std::string filePath; 
+}; 
+
+
+class ChatModel{
+public:
+    std::vector<ChatSessionState> getChatSessions();
+    bool saveChatSession(const ChatSessionState &session);
+    bool deleteChatSession(const std::string name);
+     
+}; 
+
+
+
+
+
 class  SessionManager{
 public:
     SessionManager();
@@ -70,6 +90,10 @@ private:
     
 
 }; 
+
+
+
+
 
 
 #endif // INFERENCE_H_

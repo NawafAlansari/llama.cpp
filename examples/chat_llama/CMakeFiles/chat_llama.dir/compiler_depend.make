@@ -517,7 +517,12 @@ examples/chat_llama/CMakeFiles/chat_llama.dir/chat_llama.cpp.o: examples/chat_ll
   /usr/include/c++/11/bits/enable_special_members.h \
   /usr/include/c++/11/bits/unordered_map.h \
   /usr/include/c++/11/bits/erase_if.h \
-  examples/chat_llama/CLIView.h
+  examples/chat_llama/CLIView.h \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_stack.h
 
 examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o: examples/chat_llama/controllers.cpp \
   /usr/include/stdc-predef.h \
@@ -776,7 +781,14 @@ examples/chat_llama/CMakeFiles/chat_llama.dir/controllers.cpp.o: examples/chat_l
   /usr/include/c++/11/bits/enable_special_members.h \
   /usr/include/c++/11/bits/unordered_map.h \
   /usr/include/c++/11/bits/erase_if.h \
-  examples/chat_llama/CLIView.h
+  examples/chat_llama/CLIView.h \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_stack.h \
+  /usr/include/c++/11/iterator \
+  /usr/include/c++/11/bits/stream_iterator.h
 
 examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o: examples/chat_llama/inference.cpp \
   /usr/include/stdc-predef.h \
@@ -1043,8 +1055,6 @@ examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o: examples/chat_lla
   /usr/include/c++/11/bits/stream_iterator.h
 
 
-/usr/include/c++/11/bits/stream_iterator.h:
-
 /usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
@@ -1055,7 +1065,17 @@ examples/chat_llama/CMakeFiles/chat_llama.dir/inference.cpp.o: examples/chat_lla
 
 examples/chat_llama/inference.cpp:
 
+/usr/include/c++/11/bits/stream_iterator.h:
+
 examples/chat_llama/controllers.cpp:
+
+/usr/include/c++/11/bits/stl_stack.h:
+
+/usr/include/c++/11/bits/deque.tcc:
+
+/usr/include/c++/11/deque:
+
+/usr/include/c++/11/stack:
 
 examples/chat_llama/controllers.h:
 
@@ -1108,6 +1128,8 @@ common/console.h:
 /usr/include/c++/11/bits/basic_string.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/11/bits/stl_deque.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 

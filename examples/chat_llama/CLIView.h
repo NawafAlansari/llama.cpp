@@ -4,6 +4,19 @@
 #include <string> 
 #include "inference.h"
 
+
+
+
+
+class ChatListView{
+public: 
+    void displayChatList(std::vector<std::string> &chatNames); 
+    std::string getCommandInput(); 
+    int getNavigationInput(); 
+}; 
+
+
+
 class CLIView {
 public:
     static void printChatLlaMaLogo();
@@ -14,6 +27,7 @@ public:
     static void cleanChatView(); 
 
 }; 
+
 
 
 #endif // CLI_VIEW_H_

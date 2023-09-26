@@ -5,7 +5,8 @@
 #include "common.h"
 
 //TODO(DONE): There is a weird bug where sometimes no user input goes through to model, or at least so it seems! Needs to be investigated.(DONE Awkwardly). 
-//TODO: Implement chat history, saving and loading chat data. 
+//TODO(DONE): Implement chat history, saving and loading chat data. 
+//TODO: Add the chatListView and all the stuff needed for it to work. 
 //TODO: Add negative prompting and stuff like that so that I can have more control over the conversation and stop it whenever it is the turn of the user.
 
 
@@ -18,6 +19,6 @@ int main(int argc, char *argv[])
         return 1; 
     }
     ChatController chat(params);
-    chat.runChat();
+    chat.run();
     return 0;
 }
