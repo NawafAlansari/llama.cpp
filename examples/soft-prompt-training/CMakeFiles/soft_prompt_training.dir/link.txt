@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/soft_prompt_training.dir/soft_prompt_training.cpp.o -o ../../bin/soft_prompt_training  ../../common/libcommon.a ../../libllama.a 

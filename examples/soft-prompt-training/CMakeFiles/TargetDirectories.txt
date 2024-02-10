@@ -1,0 +1,7 @@
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/soft-prompt-training/CMakeFiles/soft_prompt_training.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/soft-prompt-training/CMakeFiles/edit_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/soft-prompt-training/CMakeFiles/rebuild_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/soft-prompt-training/CMakeFiles/list_install_components.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/soft-prompt-training/CMakeFiles/install.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/soft-prompt-training/CMakeFiles/install/local.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/soft-prompt-training/CMakeFiles/install/strip.dir

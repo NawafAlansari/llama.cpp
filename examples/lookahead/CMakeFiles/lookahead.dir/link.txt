@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/lookahead.dir/lookahead.cpp.o -o ../../bin/lookahead  ../../common/libcommon.a ../../libllama.a 
