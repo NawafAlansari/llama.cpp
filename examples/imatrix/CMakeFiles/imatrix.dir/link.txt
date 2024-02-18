@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/imatrix.dir/imatrix.cpp.o -o ../../bin/imatrix  ../../common/libcommon.a ../../libllama.a 

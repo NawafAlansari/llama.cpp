@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/gguf.dir/gguf.cpp.o ../../CMakeFiles/ggml.dir/ggml.c.o ../../CMakeFiles/ggml.dir/ggml-alloc.c.o ../../CMakeFiles/ggml.dir/ggml-backend.c.o ../../CMakeFiles/ggml.dir/ggml-quants.c.o -o ../../bin/gguf 
