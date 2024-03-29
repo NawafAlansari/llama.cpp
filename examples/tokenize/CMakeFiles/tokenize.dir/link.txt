@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/tokenize.dir/tokenize.cpp.o -o ../../bin/tokenize  ../../common/libcommon.a ../../libllama.a 

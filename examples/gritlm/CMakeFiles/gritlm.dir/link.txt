@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/gritlm.dir/gritlm.cpp.o -o ../../bin/gritlm  ../../common/libcommon.a ../../libllama.a 

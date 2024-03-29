@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/lookup-create.dir/lookup-create.cpp.o -o ../../bin/lookup-create  ../../common/libcommon.a ../../libllama.a 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/server.dir/server.cpp.o ../../common/CMakeFiles/json-schema-to-grammar.dir/json-schema-to-grammar.cpp.o -o ../../bin/server  ../../common/libcommon.a ../../libllama.a 

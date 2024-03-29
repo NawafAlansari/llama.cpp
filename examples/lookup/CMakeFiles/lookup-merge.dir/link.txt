@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/lookup-merge.dir/lookup-merge.cpp.o -o ../../bin/lookup-merge  ../../common/libcommon.a ../../libllama.a 

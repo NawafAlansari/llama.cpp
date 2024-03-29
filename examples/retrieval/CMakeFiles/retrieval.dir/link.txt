@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/retrieval.dir/retrieval.cpp.o -o ../../bin/retrieval  ../../common/libcommon.a ../../libllama.a 

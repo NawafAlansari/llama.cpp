@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/lookup-stats.dir/lookup-stats.cpp.o -o ../../bin/lookup-stats  ../../common/libcommon.a ../../libllama.a 

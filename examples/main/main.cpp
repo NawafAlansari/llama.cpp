@@ -1,35 +1,4 @@
-#include "common.h"
-
-#include "console.h"
-#include "llama.h"
-
-#include <cassert>
-#include <cinttypes>
-#include <cmath>
-#include <cstdio>
-#include <cstring>
-#include <ctime>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-
-#if defined (__unix__) || (defined (__APPLE__) && defined (__MACH__))
-#include <signal.h>
-#include <unistd.h>
-#elif defined (_WIN32)
-#define WIN32_LEAN_AND_MEAN
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-#include <windows.h>
-#include <signal.h>
-#endif
-
-#if defined(_MSC_VER)
-#pragma warning(disable: 4244 4267) // possible loss of data
-#endif
+#include "main.h"
 
 static llama_context           ** g_ctx;
 static llama_model             ** g_model;
@@ -117,6 +86,83 @@ static void llama_log_callback_logTee(ggml_log_level level, const char * text, v
     LOG_TEE("%s", text);
 }
 
+
+
+void initialize_logging(int argc, char ** argv)
+{
+#ifndef LOG_DISABLE_LOGS
+    log_set_target(log_filename_generator("main", "log"));
+    LOG_TEE("Log start\n");
+    log_dump_cmdline(argc, argv);
+    llama_log_set(llama_log_callback_logTee, nullptr);
+#endif // LOG_DISABLE_LOGS
+}
+
+std::tuple<llama_model*, llama_context*, llama_context*> load_and_initialize_model(gpt_params& params) {
+    LOG("%s: llama backend init\n", __func__);
+    llama_backend_init();
+    llama_numa_init(params.numa);
+
+    llama_model* model;
+    llama_context* ctx;
+    llama_context* ctx_guidance = nullptr;
+
+    g_model = &model;
+    g_ctx = &ctx;
+
+    // Load the model and apply lora adapter, if any
+    LOG("%s: load the model and apply lora adapter, if any\n", __func__);
+    std::tie(model, ctx) = llama_init_from_gpt_params(params);
+
+    if (params.sparams.cfg_scale > 1.f) {
+        struct llama_context_params lparams = llama_context_params_from_gpt_params(params);
+        ctx_guidance = llama_new_context_with_model(model, lparams);
+    }
+
+    if (model == nullptr) {
+        LOG_TEE("%s: error: unable to load model\n", __func__);
+        return {nullptr, nullptr, nullptr};
+    }
+
+    return {model, ctx, ctx_guidance};
+}
+
+
+std::vector<llama_token> load_session_from_file(llama_context* ctx, gpt_params& params)
+{
+    std::string session_file_path = params.path_prompt_cache;
+    std::vector<llama_token> session_tokens;
+
+    if (!session_file_path.empty()) {
+        
+        LOG_TEE("%s: attempting to load saved session from '%s'\n", __func__, session_file_path.c_str());
+        if (!file_exists(session_file_path)) {
+            LOG_TEE("%s: session file does not exist, will create.\n", __func__);
+        } else if (file_is_empty(session_file_path)) {
+            LOG_TEE("%s: The session file is empty. A new session will be initialized.\n", __func__);
+        } else {
+            // The file exists and is not empty
+            const int n_ctx = llama_n_ctx(ctx);
+            session_tokens.resize(n_ctx);
+            size_t n_token_count_out = 0;
+            if (!llama_load_session_file(ctx, session_file_path.c_str(), session_tokens.data(), session_tokens.capacity(), &n_token_count_out)) {
+                LOG_TEE("%s: error: failed to load session file '%s'\n", __func__, session_file_path.c_str());
+                exit(1);
+            }
+            session_tokens.resize(n_token_count_out);
+            llama_set_rng_seed(ctx, params.seed);
+            LOG_TEE("%s: loaded a session with prompt size of %d tokens\n", __func__, (int)session_tokens.size());
+
+        }
+    } else { 
+        LOG_TEE("%s: no session file specified\n", __func__);
+        session_tokens = std::vector<llama_token>(); 
+    }
+
+    return session_tokens;
+}
+
+
 int main(int argc, char ** argv) {
     gpt_params params;
     g_params = &params;
@@ -126,12 +172,7 @@ int main(int argc, char ** argv) {
     }
     llama_sampling_params & sparams = params.sparams;
 
-#ifndef LOG_DISABLE_LOGS
-    log_set_target(log_filename_generator("main", "log"));
-    LOG_TEE("Log start\n");
-    log_dump_cmdline(argc, argv);
-    llama_log_set(llama_log_callback_logTee, nullptr);
-#endif // LOG_DISABLE_LOGS
+    initialize_logging(argc, argv);
 
     // TODO: Dump params ?
     //LOG("Params perplexity: %s\n", LOG_TOSTR(params.perplexity));
@@ -184,28 +225,14 @@ int main(int argc, char ** argv) {
         params.prompt = gpt_random_prompt(rng);
     }
 
-    LOG("%s: llama backend init\n", __func__);
-    llama_backend_init();
-    llama_numa_init(params.numa);
-
-    llama_model * model;
-    llama_context * ctx;
-    llama_context * ctx_guidance = NULL;
-    g_model = &model;
-    g_ctx = &ctx;
-
-    // load the model and apply lora adapter, if any
-    LOG("%s: load the model and apply lora adapter, if any\n", __func__);
-    std::tie(model, ctx) = llama_init_from_gpt_params(params);
-    if (sparams.cfg_scale > 1.f) {
-        struct llama_context_params lparams = llama_context_params_from_gpt_params(params);
-        ctx_guidance = llama_new_context_with_model(model, lparams);
-    }
-
+    //load models and contexts 
+    auto [model, ctx, ctx_guidance] = load_and_initialize_model(params);
     if (model == NULL) {
         LOG_TEE("%s: error: unable to load model\n", __func__);
         return 1;
     }
+    g_model = &model;
+    g_ctx = &ctx;
 
     const int n_ctx_train = llama_n_ctx_train(model);
     const int n_ctx = llama_n_ctx(ctx);
@@ -222,28 +249,8 @@ int main(int argc, char ** argv) {
         LOG_TEE("%s\n", get_system_info(params).c_str());
     }
 
-    std::string path_session = params.path_prompt_cache;
-    std::vector<llama_token> session_tokens;
-
-    if (!path_session.empty()) {
-        LOG_TEE("%s: attempting to load saved session from '%s'\n", __func__, path_session.c_str());
-        if (!file_exists(path_session)) {
-            LOG_TEE("%s: session file does not exist, will create.\n", __func__);
-        } else if (file_is_empty(path_session)) {
-            LOG_TEE("%s: The session file is empty. A new session will be initialized.\n", __func__);
-        } else {
-            // The file exists and is not empty
-            session_tokens.resize(n_ctx);
-            size_t n_token_count_out = 0;
-            if (!llama_load_session_file(ctx, path_session.c_str(), session_tokens.data(), session_tokens.capacity(), &n_token_count_out)) {
-                LOG_TEE("%s: error: failed to load session file '%s'\n", __func__, path_session.c_str());
-                return 1;
-            }
-            session_tokens.resize(n_token_count_out);
-            llama_set_rng_seed(ctx, params.seed);
-            LOG_TEE("%s: loaded a session with prompt size of %d tokens\n", __func__, (int)session_tokens.size());
-        }
-    }
+    
+    std::vector<llama_token> session_tokens = load_session_from_file(ctx, params);
 
     const bool add_bos = llama_should_add_bos_token(model);
     LOG("add_bos: %d\n", add_bos);
@@ -492,6 +499,8 @@ int main(int argc, char ** argv) {
     bool is_antiprompt        = false;
     bool input_echo           = true;
     bool display              = true;
+    //TODO: Remove later 
+    std::string path_session = params.path_prompt_cache;
     bool need_to_save_session = !path_session.empty() && n_matching_session_tokens < embd_inp.size();
 
     int n_past             = 0;

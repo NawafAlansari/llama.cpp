@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/passkey.dir/passkey.cpp.o -o ../../bin/passkey  ../../common/libcommon.a ../../libllama.a 

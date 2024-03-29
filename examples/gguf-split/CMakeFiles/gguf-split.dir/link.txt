@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/gguf-split.dir/gguf-split.cpp.o -o ../../bin/gguf-split  ../../common/libcommon.a ../../libllama.a 
