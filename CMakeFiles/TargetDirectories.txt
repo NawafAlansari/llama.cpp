@@ -322,6 +322,14 @@
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/imatrix/CMakeFiles/install.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/imatrix/CMakeFiles/install/local.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/imatrix/CMakeFiles/install/strip.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/my_main.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/test.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/edit_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/rebuild_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/list_install_components.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/install.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/install/local.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/CMakeFiles/install/strip.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/server/CMakeFiles/server.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/server/CMakeFiles/test.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/server/CMakeFiles/edit_cache.dir

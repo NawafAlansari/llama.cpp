@@ -1381,6 +1381,19 @@ imatrix/fast:
 .PHONY : imatrix/fast
 
 #=============================================================================
+# Target rules for targets named my_main
+
+# Build rule for target.
+my_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_main
+.PHONY : my_main
+
+# fast build rule for target.
+my_main/fast:
+	$(MAKE) $(MAKESILENT) -f examples/my_main/CMakeFiles/my_main.dir/build.make examples/my_main/CMakeFiles/my_main.dir/build
+.PHONY : my_main/fast
+
+#=============================================================================
 # Target rules for targets named server
 
 # Build rule for target.
@@ -1671,6 +1684,7 @@ help:
 	@echo "... lookup-merge"
 	@echo "... lookup-stats"
 	@echo "... main"
+	@echo "... my_main"
 	@echo "... parallel"
 	@echo "... passkey"
 	@echo "... perplexity"

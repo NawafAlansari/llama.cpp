@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/my_main.dir/my_main.cpp.o CMakeFiles/my_main.dir/generation.cpp.o CMakeFiles/my_main.dir/helpers.cpp.o -o ../../bin/my_main  ../../common/libcommon.a ../../libllama.a 

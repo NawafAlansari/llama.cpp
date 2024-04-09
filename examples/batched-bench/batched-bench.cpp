@@ -122,6 +122,7 @@ int main(int argc, char ** argv) {
         for (int32_t i = 0; i < (int32_t) batch.n_tokens; i += n_batch) {
             const int32_t n_tokens = std::min(n_batch, (int32_t) (batch.n_tokens - i));
 
+    
             llama_batch batch_view = {
                 n_tokens,
                 batch.token    + i,
@@ -156,7 +157,8 @@ int main(int argc, char ** argv) {
             return 1;
         }
     }
-
+   
+    
     LOG_TEE("\n");
     LOG_TEE("%s: n_kv_max = %d, is_pp_shared = %d, n_gpu_layers = %d, n_threads = %u, n_threads_batch = %u\n", __func__, n_kv_max, is_pp_shared, n_gpu_layers, ctx_params.n_threads, ctx_params.n_threads_batch);
     LOG_TEE("\n");
@@ -234,6 +236,10 @@ int main(int argc, char ** argv) {
             }
         }
     }
+    llama_kv_cache_view kv_cache_view = llama_kv_cache_view_init(ctx, llama_n_seq_max(ctx));
+    llama_kv_cache_view_update(ctx, &kv_cache_view);
+    dump_kv_cache_view(kv_cache_view);
+    llama_kv_cache_view_free(&kv_cache_view);
 
     llama_print_timings(ctx);
 
