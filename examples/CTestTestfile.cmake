@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/nma5214/.vscodeProjects/clones/llama.cpp/examples
-# Build directory: /home/nma5214/.vscodeProjects/clones/llama.cpp/examples
+# Source directory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples
+# Build directory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

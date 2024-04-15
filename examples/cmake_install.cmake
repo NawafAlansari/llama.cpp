@@ -1,4 +1,4 @@
-# Install script for directory: /home/nma5214/.vscodeProjects/clones/llama.cpp/examples
+# Install script for directory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,11 +27,6 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-# Install shared libraries without execute permission?
-if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
-endif()
-
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
@@ -39,166 +34,166 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/baby-llama/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/baby-llama/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/batched/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/batched/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/batched-bench/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/batched-bench/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/beam-search/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/beam-search/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/benchmark/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/benchmark/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/convert-llama2c-to-ggml/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/convert-llama2c-to-ggml/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/embedding/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/embedding/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/finetune/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/finetune/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/gritlm/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/gritlm/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/gguf-split/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/gguf-split/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/infill/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/infill/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/llama-bench/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/llama-bench/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/llava/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/llava/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/main/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/main/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/tokenize/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/tokenize/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/parallel/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/parallel/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/perplexity/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/perplexity/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/quantize/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/quantize/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/quantize-stats/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/quantize-stats/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/retrieval/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/retrieval/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/save-load-state/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/save-load-state/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/simple/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/simple/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/passkey/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/passkey/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/speculative/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/speculative/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/lookahead/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/lookahead/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/lookup/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/lookup/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/gguf/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/gguf/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/train-text-from-scratch/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/train-text-from-scratch/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/imatrix/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/imatrix/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/my_main/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/server/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/server/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/export-lora/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/export-lora/cmake_install.cmake")
 endif()
 

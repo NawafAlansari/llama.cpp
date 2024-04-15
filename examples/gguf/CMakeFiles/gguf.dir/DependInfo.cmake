@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/gguf/gguf.cpp" "examples/gguf/CMakeFiles/gguf.dir/gguf.cpp.o" "gcc" "examples/gguf/CMakeFiles/gguf.dir/gguf.cpp.o.d"
+  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/gguf/gguf.cpp" "examples/gguf/CMakeFiles/gguf.dir/gguf.cpp.o" "gcc" "examples/gguf/CMakeFiles/gguf.dir/gguf.cpp.o.d"
   )
 
 # Targets to which this target links.

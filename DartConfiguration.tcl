@@ -4,30 +4,31 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/nma5214/.vscodeProjects/clones/llama.cpp
-BuildDirectory: /home/nma5214/.vscodeProjects/clones/llama.cpp
+SourceDirectory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp
+BuildDirectory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: nma5214-All-Series
+Site: Nawafs-MacBook-Pro.local
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-c++
+BuildName: Darwin-c++
 
 # Subprojects
 LabelsForSubprojects: 
 
 # Submission information
 SubmitURL: http://
+SubmitInactivityTimeout: 
 
 # Dashboard start time
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/nma5214/.vscodeProjects/clones/llama.cpp"
-MakeCommand: /home/nma5214/miniconda3/envs/devops_exper/lib/python3.11/site-packages/cmake/data/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
+ConfigureCommand: "/opt/homebrew/Cellar/cmake/3.24.2/bin/cmake" "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp"
+MakeCommand: /opt/homebrew/Cellar/cmake/3.24.2/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -62,8 +63,8 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/c++
-CompilerVersion: 11.4.0
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+CompilerVersion: 13.1.6.13160021
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

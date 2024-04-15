@@ -1,4 +1,4 @@
-# Install script for directory: /home/nma5214/.vscodeProjects/clones/llama.cpp
+# Install script for directory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,11 +27,6 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-# Install shared libraries without execute permission?
-if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
-endif()
-
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
@@ -39,58 +34,71 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/objdump")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Llama" TYPE FILE FILES
-    "/home/nma5214/.vscodeProjects/clones/llama.cpp/LlamaConfig.cmake"
-    "/home/nma5214/.vscodeProjects/clones/llama.cpp/LlamaConfigVersion.cmake"
+    "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/LlamaConfig.cmake"
+    "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/LlamaConfigVersion.cmake"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "/home/nma5214/.vscodeProjects/clones/llama.cpp/ggml.h"
-    "/home/nma5214/.vscodeProjects/clones/llama.cpp/ggml-alloc.h"
-    "/home/nma5214/.vscodeProjects/clones/llama.cpp/ggml-backend.h"
+    "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/ggml.h"
+    "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/ggml-alloc.h"
+    "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/ggml-backend.h"
+    "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/ggml-metal.h"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/nma5214/.vscodeProjects/clones/llama.cpp/libllama.a")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/libllama.a")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libllama.a" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libllama.a")
+    execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libllama.a")
+  endif()
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/nma5214/.vscodeProjects/clones/llama.cpp/llama.h")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/llama.h")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE FILES "/home/nma5214/.vscodeProjects/clones/llama.cpp/convert.py")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE FILES "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/convert.py")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE FILES "/home/nma5214/.vscodeProjects/clones/llama.cpp/convert-lora-to-ggml.py")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE FILES "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/convert-lora-to-ggml.py")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/common/cmake_install.cmake")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ FILES "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/ggml-metal.metal")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/tests/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/cmake_install.cmake")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/bin/default.metallib")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/nma5214/.vscodeProjects/clones/llama.cpp/pocs/cmake_install.cmake")
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/tests/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/pocs/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -101,5 +109,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/nma5214/.vscodeProjects/clones/llama.cpp/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,10 +1,10 @@
-set(LLAMA_VERSION 0.0.2570)
-set(LLAMA_BUILD_COMMIT 51d28d8)
-set(LLAMA_BUILD_NUMBER 2570)
+set(LLAMA_VERSION 0.0.2572)
+set(LLAMA_BUILD_COMMIT 1079464a)
+set(LLAMA_BUILD_NUMBER 2572)
 set(LLAMA_SHARED_LIB OFF)
 set(LLAMA_BLAS OFF)
 set(LLAMA_CUDA OFF)
-set(LLAMA_METAL OFF)
+set(LLAMA_METAL ON)
 set(LLAMA_MPI OFF)
 set(LLAMA_CLBLAST OFF)
 set(LLAMA_HIPBLAS OFF)
@@ -79,8 +79,8 @@ find_library(llama_LIBRARY llama
     REQUIRED
     HINTS ${LLAMA_LIB_DIR})
 
-set(_llama_link_deps "Threads::Threads" "")
-set(_llama_transient_defines "GGML_SCHED_MAX_COPIES=4;$<$<CONFIG:Debug>:_GLIBCXX_ASSERTIONS>;_XOPEN_SOURCE=600;_GNU_SOURCE")
+set(_llama_link_deps "Threads::Threads" "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/Accelerate.framework;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/Foundation.framework;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/Metal.framework;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/MetalKit.framework")
+set(_llama_transient_defines "GGML_SCHED_MAX_COPIES=4;GGML_USE_ACCELERATE;ACCELERATE_NEW_LAPACK;ACCELERATE_LAPACK_ILP64;GGML_USE_METAL;_XOPEN_SOURCE=600;_DARWIN_C_SOURCE")
 add_library(llama UNKNOWN IMPORTED)
 set_target_properties(llama
     PROPERTIES
