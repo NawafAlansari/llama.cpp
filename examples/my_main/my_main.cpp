@@ -85,83 +85,6 @@ struct batch {
 };
 
 
-
-struct decoding_batch {
-    std::vector<llama_token> tokens; 
-    std::vector<int32_t> seq_ids; 
-    int32_t n_batches; 
-
-    decoding_batch(std::vector<llama_token> tokens, std::vector<int32_t> seq_ids): tokens(tokens), seq_ids(seq_ids){
-        n_batches = tokens.size(); 
-    }
-
-    llama_batch make_llama_batch(){
-        llama_batch new_batch = llama_batch_init(n_batches, 0, n_batches); 
-        for (int32_t i=0; i<n_batches; i++){
-            llama_batch_add(new_batch, tokens[i], i, {seq_ids[i]}, true); 
-            new_batch.logits[new_batch.n_tokens-1] = true;
-        }
-        return new_batch;
-    }
-
-    bool decode(llama_context *ctx){ 
-        llama_batch batch_view = make_llama_batch(); 
-        const int ret = llama_decode(ctx, batch_view);
-        if (ret != 0){
-            LOG_TEE("failed to decode the batch, n_batch = %d, ret = %d\n", 1, ret);
-            return false; 
-        }
-        llama_synchronize(ctx);
-        return true; 
-    }
-
-    void clear(){
-        tokens.clear(); 
-        seq_ids.clear(); 
-        n_batches = 0; 
-    }
-
-}; 
-
-
-
-
-
-struct decoding_sequence {
-    std::vector<llama_token> tokens; 
-    int32_t tokens_limit; 
-    bool stop = false; 
-    
-    int32_t n_decoded; 
-    int32_t n_tokens;
-
-    decoding_sequence(std::vector<llama_token> tokens, int32_t tokens_limit): tokens(tokens), tokens_limit(tokens_limit){
-        n_tokens = tokens.size(); 
-        n_decoded = 0; 
-    }; 
-
-}; 
-
-
-struct decoder {
-    llama_context *ctx; 
-    llama_model *model;
-    std::vector<decoding_sequence> sequences; 
-
-    decoder(llama_context *ctx, llama_model *model): ctx(ctx), model(model){}
-
-    void decode(){ 
-        
-    }
-    
-    
-    
-
-};
-
-
-
-
 std::vector<std::vector<llama_token>> tokenize_prompts(llama_context *ctx, std::vector<std::string> prompts){
     std::vector<std::vector<llama_token>> tokenized_prompts; 
     for (auto p: prompts){
@@ -192,11 +115,64 @@ void dump_cache(llama_context *ctx, bool verbose=false){
 
 
 
+struct my_batch_element{
+    std::vector<llama_token> tokens; 
+    int32_t n_tokens; 
+    llama_seq_id seq_id; 
+
+    llama_pos cache_p0; 
+    llama_pos cahche_p1;
+}; 
 
 
+struct my_batch{ 
+    std::vector<my_batch_element> elements; 
+    std::vector<llama_batch> internal_batches;
+    int32_t number_batches; 
+    int32_t n_total_tokens; 
 
 
+    void add_element(std::vector<llama_token> tokens, llama_seq_id seq_id, llama_pos p0, llama_pos p1){
+        my_batch_element be = {tokens, (int32_t) tokens.size(), seq_id, p0, p1}; 
+        elements.push_back(be); 
+        add_element_to_internal_batch(number_batches-1);
 
+        n_total_tokens += be.n_tokens; 
+        number_batches += 1;
+    }
+
+
+    void add_element_to_internal_batch(int32_t i){
+        my_batch_element be = elements[i]; 
+        llama_batch internal_batch = llama_batch_init(be.n_tokens, 0, 1); 
+
+        for (int32_t j=0; j<be.n_tokens; j++){
+            llama_batch_add(internal_batch, be.tokens[j], j, {be.seq_id}, true); 
+        }
+
+        internal_batches.push_back(internal_batch);
+    
+    }
+    
+
+}; 
+
+
+/*
+What we trying to do: 
+    - Understand how the kv cache works: 
+        Discription: We want to understand it enough to be able to use it so decode, and generate text for totally different prompts, in parallel. 
+        Goal: use the understanding to build suitable abstraction for the kv cache, that allows for easy batching, decoding and generation. 
+        Plan (For now): 
+            - Understand How it is stored. 
+            - Understand How the number of sequences used. 
+            - Understand How it interact with the llama_batch. 
+            - Understand How llama_decode uses the kv cache.
+Notes: 
+    
+            
+            
+*/
 
 int main(int argc, char **argv){
 
@@ -215,18 +191,22 @@ int main(int argc, char **argv){
     auto tokenized_prompts = tokenize_prompts(ctx, prompts); 
     batch b; b.init_from_tokens(tokenized_prompts);
 
+    int32_t n_total_tokens = b.n_tokens; 
+
+    printf("n_total_tokens: %d\n", n_total_tokens);
     if (!b.decode(ctx)){
         fprintf(stderr, "%s: error: failed to decode\n", __func__);
         exit(1); 
     }
 
-
-    llama_kv_cache_seq_cp(ctx, 0, 1, -1, -1); 
     dump_cache(ctx, false);
 
+    llama_kv_cache_seq_cp(ctx, 0, 1, -1, -1); 
+    
     
 
     //auto * logits = llama_get_logits_ith(ctx, batch.n_tokens-1);
+    
     
     dump_cache(ctx, false); 
 

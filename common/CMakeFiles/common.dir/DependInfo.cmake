@@ -8,17 +8,17 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/common.cpp" "common/CMakeFiles/common.dir/common.cpp.o" "gcc" "common/CMakeFiles/common.dir/common.cpp.o.d"
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/console.cpp" "common/CMakeFiles/common.dir/console.cpp.o" "gcc" "common/CMakeFiles/common.dir/console.cpp.o.d"
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/grammar-parser.cpp" "common/CMakeFiles/common.dir/grammar-parser.cpp.o" "gcc" "common/CMakeFiles/common.dir/grammar-parser.cpp.o.d"
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/ngram-cache.cpp" "common/CMakeFiles/common.dir/ngram-cache.cpp.o" "gcc" "common/CMakeFiles/common.dir/ngram-cache.cpp.o.d"
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/sampling.cpp" "common/CMakeFiles/common.dir/sampling.cpp.o" "gcc" "common/CMakeFiles/common.dir/sampling.cpp.o.d"
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/train.cpp" "common/CMakeFiles/common.dir/train.cpp.o" "gcc" "common/CMakeFiles/common.dir/train.cpp.o.d"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/common.cpp" "common/CMakeFiles/common.dir/common.cpp.o" "gcc" "common/CMakeFiles/common.dir/common.cpp.o.d"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/console.cpp" "common/CMakeFiles/common.dir/console.cpp.o" "gcc" "common/CMakeFiles/common.dir/console.cpp.o.d"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/grammar-parser.cpp" "common/CMakeFiles/common.dir/grammar-parser.cpp.o" "gcc" "common/CMakeFiles/common.dir/grammar-parser.cpp.o.d"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/ngram-cache.cpp" "common/CMakeFiles/common.dir/ngram-cache.cpp.o" "gcc" "common/CMakeFiles/common.dir/ngram-cache.cpp.o.d"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/sampling.cpp" "common/CMakeFiles/common.dir/sampling.cpp.o" "gcc" "common/CMakeFiles/common.dir/sampling.cpp.o.d"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/train.cpp" "common/CMakeFiles/common.dir/train.cpp.o" "gcc" "common/CMakeFiles/common.dir/train.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/CMakeFiles/llama.dir/DependInfo.cmake"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/CMakeFiles/llama.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

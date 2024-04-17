@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/nawafalansari/.vscodeProjects/projects/llama.cpp/common/json-schema-to-grammar.cpp" "common/CMakeFiles/json-schema-to-grammar.dir/json-schema-to-grammar.cpp.o" "gcc" "common/CMakeFiles/json-schema-to-grammar.dir/json-schema-to-grammar.cpp.o.d"
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/common/json-schema-to-grammar.cpp" "common/CMakeFiles/json-schema-to-grammar.dir/json-schema-to-grammar.cpp.o" "gcc" "common/CMakeFiles/json-schema-to-grammar.dir/json-schema-to-grammar.cpp.o.d"
   )
 
 # Targets to which this target links.

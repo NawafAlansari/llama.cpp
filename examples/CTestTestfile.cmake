@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples
-# Build directory: /Users/nawafalansari/.vscodeProjects/projects/llama.cpp/examples
+# Source directory: /home/nma5214/.vscodeProjects/clones/llama.cpp/examples
+# Build directory: /home/nma5214/.vscodeProjects/clones/llama.cpp/examples
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
@@ -34,5 +34,6 @@ subdirs("gguf")
 subdirs("train-text-from-scratch")
 subdirs("imatrix")
 subdirs("my_main")
+subdirs("my_baby_llama")
 subdirs("server")
 subdirs("export-lora")

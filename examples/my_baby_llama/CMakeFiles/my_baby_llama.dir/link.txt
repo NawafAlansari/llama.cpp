@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/my_baby_llama.dir/my_baby_llama.cpp.o -o ../../bin/my_baby_llama  ../../common/libcommon.a ../../libllama.a 
