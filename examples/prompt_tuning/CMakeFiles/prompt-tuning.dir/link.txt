@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/prompt-tuning.dir/prompt-tuning.cpp.o -o ../../bin/prompt-tuning  ../../common/libcommon.a ../../libllama.a 

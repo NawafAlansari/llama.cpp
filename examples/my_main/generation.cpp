@@ -25,8 +25,6 @@ llama_batch getBatch(llama_context *ctx, llama_model *model, std::string prompt)
 }
 
 
-
-
 int generate(llama_context *ctx, llama_model *model, std::string prompt, int n_len){ 
     llama_batch batch = getBatch(ctx, model, prompt);
     

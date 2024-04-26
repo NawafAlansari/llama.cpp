@@ -1407,6 +1407,19 @@ my_baby_llama/fast:
 .PHONY : my_baby_llama/fast
 
 #=============================================================================
+# Target rules for targets named prompt-tuning
+
+# Build rule for target.
+prompt-tuning: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 prompt-tuning
+.PHONY : prompt-tuning
+
+# fast build rule for target.
+prompt-tuning/fast:
+	$(MAKE) $(MAKESILENT) -f examples/prompt_tuning/CMakeFiles/prompt-tuning.dir/build.make examples/prompt_tuning/CMakeFiles/prompt-tuning.dir/build
+.PHONY : prompt-tuning/fast
+
+#=============================================================================
 # Target rules for targets named server
 
 # Build rule for target.
@@ -1702,6 +1715,7 @@ help:
 	@echo "... parallel"
 	@echo "... passkey"
 	@echo "... perplexity"
+	@echo "... prompt-tuning"
 	@echo "... q8dot"
 	@echo "... quantize"
 	@echo "... quantize-stats"

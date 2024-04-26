@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/chat.cpp" "examples/my_main/CMakeFiles/my_main.dir/chat.cpp.o" "gcc" "examples/my_main/CMakeFiles/my_main.dir/chat.cpp.o.d"
   "/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/generation.cpp" "examples/my_main/CMakeFiles/my_main.dir/generation.cpp.o" "gcc" "examples/my_main/CMakeFiles/my_main.dir/generation.cpp.o.d"
   "/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/helpers.cpp" "examples/my_main/CMakeFiles/my_main.dir/helpers.cpp.o" "gcc" "examples/my_main/CMakeFiles/my_main.dir/helpers.cpp.o.d"
   "/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_main/my_main.cpp" "examples/my_main/CMakeFiles/my_main.dir/my_main.cpp.o" "gcc" "examples/my_main/CMakeFiles/my_main.dir/my_main.cpp.o.d"

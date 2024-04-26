@@ -20,6 +20,78 @@ constexpr float rms_norm_eps = 5e-6f;
 
 
 
+void dump_ggml_tensor_f32_1d(const struct ggml_tensor * t, int per_row=8, int64_t n_rows=-1) {
+    if (n_rows < 0) {
+        n_rows = t->ne[0];
+    } else {
+        n_rows = std::min(n_rows, t->ne[0]);
+    }
+
+    for (int i=0; i<t->ne[0]; ++i) {
+        printf("%f ", ggml_get_f32_1d(t, i));
+        if ((i+1) % per_row == 0) {
+            printf("\n");
+            if ((i+1) / per_row >= n_rows) {
+                break;
+            }
+        }
+    }
+}
+
+
+void dump_ggml_tensor_i32_1d(const struct ggml_tensor * t, int per_row=8) {
+    for (int i=0; i<t->ne[0]; ++i) {
+        printf("%d ", ggml_get_i32_1d(t, i));
+        if ((i+1) % per_row == 0) {
+            printf("\n");
+        }
+    }
+}
+
+
+void dump_ggml_tensor_f32_2d(const struct ggml_tensor * t){
+    int n_batch = t->nb[1];
+    int n_token = t->nb[0];
+
+    for (int i=0; i<n_batch; ++i){
+        printf("Batch %d\n", i);
+        for (int j=0; j<n_token; ++j){
+            printf("%f ", ggml_get_f32_nd(t, j, i, 0, 0));
+        }
+        printf("\n");
+    }
+}
+
+void dump_ggml_tensor_i32_2d(const struct ggml_tensor * t){
+    int n_batch = t->nb[1];
+    int n_token = t->nb[0];
+
+    for (int i=0; i<n_batch; ++i){
+        printf("Batch %d\n", i);
+        for (int j=0; j<n_token; ++j){
+            printf("%d ", ggml_get_i32_nd(t, j, i, 0, 0));
+        }
+        printf("\n");
+    }
+}
+
+
+void dump_ggml_tensor_f32_3d_slice(const struct ggml_tensor * t, int slice){
+    GGML_ASSERT(ggml_is_3d(t));
+    GGML_ASSERT(slice < t->ne[2]);
+
+    for (int i=0; i<t->ne[0]; ++i){
+        for (int j=0; j<t->ne[1]; ++j){
+            printf("%f ", ggml_get_f32_nd(t, i, j, slice, 0));
+        }
+        printf("\n");
+    }
+}
+
+
+
+
+
 struct llama_hparams{ 
     uint32_t n_vocab = 8; 
     uint32_t n_ctx = 8; 
@@ -247,8 +319,25 @@ static void get_examples_targets_batch(
 }
 
 
-//Batch Processing and Generation Functions 
+void build_kv_store(ggml_context * ctx, llama_model * model, llama_kv_cache & cache, ggml_cgraph * graph, ggml_tensor * k_cur, ggml_tensor * v_cur, int n_ctx, int n_tokens, int n_batch, int n_layer, int n_embd, int n_past, int il){
 
+    //k_cur shape: [n_embd, n_tokens*n_batch]
+    //v_cur shape: [n_embd, n_tokens*n_batch]
+    {
+        
+        struct ggml_tensor * k_cache_view = ggml_view_1d(ctx, cache.k, n_tokens*n_embd*n_batch, (ggml_element_size(cache.k)*n_embd)*(il*n_ctx*n_batch + n_past));
+        struct ggml_tensor * v_cache_view = ggml_view_2d(ctx, cache.v, n_tokens*n_embd, n_batch, (ggml_element_size(cache.v)*n_ctx), (il*n_ctx*n_batch*n_embd*ggml_element_size(cache.v) + n_past*n_embd*ggml_element_size(cache.v)));
+
+        
+        ggml_build_forward_expand(graph, ggml_cpy(ctx, k_cur, k_cache_view)); 
+        ggml_build_forward_expand(graph, ggml_cpy(ctx, v_cur, v_cache_view)); 
+
+
+    }
+}
+
+
+//Batch Processing and Generation Functions 
 static struct ggml_tensor * forward_batch(
     struct llama_model    * model, 
     struct llama_kv_cache * cache, 
@@ -328,24 +417,7 @@ static struct ggml_tensor * forward_batch(
             assert_shape_3d(Vcur, N, n_embd, n_batch);
 
             //c. update the kv cache with the new keys and values. 
-                //kc shape [n_embd * n_ctx * n_batch * n_layer]
-                //vc shape [n_embd * n_ctx * n_batch * n_layer]
-                //Kcur shape [n_embd/n_head, n_head, N, n_batch]
-                //Vcur shape [N, n_head, N, n_batch]
-            {   
-                kc = ggml_set_2d(ctx_compute, kc, 
-                        ggml_reshape_2d(ctx_compute, Kcur, n_embd*N, n_batch), 
-                        ggml_element_size(kc)*n_embd*n_ctx,
-                        (ggml_element_size(kc)*n_embd)*(il*n_batch*n_ctx + n_past));  
-
-                vc = ggml_set_2d(ctx_compute, vc, 
-                        ggml_reshape_2d(ctx_compute, Vcur, N*n_embd, n_batch), 
-                        ggml_element_size(vc)*n_ctx*n_embd, 
-                        ggml_element_size(vc)*(n_past + il*n_embd*n_batch*n_ctx)); 
-                
-                assert_shape_1d(kc, n_embd*n_ctx*n_batch*n_layer);
-                assert_shape_1d(vc, n_embd*n_ctx*n_batch*n_layer); 
-            }
+            build_kv_store(ctx_compute, model, kv_self, gf, Kcur, Vcur, n_ctx, n_tokens, n_batch, n_layer, n_embd, n_past, il);
             
             //d. Compute attention scores                
             //Get Current input Query tensor. 
@@ -465,6 +537,7 @@ static struct ggml_tensor * forward_batch(
     
     //Step6: Build and run the computational graph. Return result tensor. 
     ggml_build_forward_expand(gf, inpL); 
+    
     return inpL; //Shape: (n_vocab, N, n_batch), N = n_tokens = the size of each batch. 
 }
 
@@ -545,8 +618,6 @@ static struct ggml_tensor * forward(
 
 
 
-
-
 static void ggml_graph_compute_helper(std::vector<uint8_t> & buf, ggml_cgraph * graph, int n_threads) {
     struct ggml_cplan plan = ggml_graph_plan(graph, n_threads);
 
@@ -575,70 +646,6 @@ void print_memory_usage(ggml_context *ctx){
     size_t mem_used = ggml_used_mem(ctx); 
     printf("Memory allocated: %zu\n", mem_used);
 }
-
-
-
-
-struct cache_view_sequence{
-    std::vector<int> positions; // size = n_ctx; 
-}; 
-
-
-
-
-struct batched_cache_view{
-    std::vector<cache_view_sequence> kv_batches; // size = n_batch 
-    int n_embd; 
-    int n_ctx; 
-    int n_batch;
-    int n_layer;
-}; 
-
-
-
-
-
-//kc shape [n_embd * n_ctx * n_batch * n_layer]
-
-cache_view_sequence get_cache_view_sequence(struct ggml_tensor * k, int n_ctx, int n_embd, int n_layer, int i_batch){
-    
-}
-
-
-batched_cache_view get_batched_cache_view(llama_model * model, llama_kv_cache * kv_cache,  int n_batch){
-    batched_cache_view kv_view;
-    kv_view.n_batch = n_batch; 
-    kv_view.n_ctx = model->hparams.n_ctx;
-    kv_view.n_embd = model->hparams.n_embd;
-    kv_view.n_layer = model->hparams.n_layer;
-
-    struct ggml_tensor * k = kv_cache->k; 
-    
-
-    kv_view.kv_batches.resize(n_batch);
-    for (int i=0; i<n_batch; ++i){
-        cache_view_sequence cur_sequence = get_cache_view_sequence(k, kv_view.n_ctx, kv_view.n_embd, kv_view.n_layer, i); 
-        kv_view.kv_batches[i] = cur_sequence;
-    }
-
-    return kv_view;
-}
-
-
-
-
-void dump_batched_cache(llama_model * model, llama_kv_cache * cache, int n_batch){ 
-    batched_cache_view kv_view = get_batched_cache_view(model, cache, n_batch); 
-
-
-    for (int i=0; i<kv_view.n_batch; ++i){
-        printf("Batch %d: ", i);
-        for (int j=0; j<kv_view.kv_batches[i].positions.size(); ++j){
-            printf("%d ", kv_view.kv_batches[i].positions[j]);
-        }
-    }
-}
-
 
 
 int main(int argc, char ** argv){
@@ -686,7 +693,7 @@ int main(int argc, char ** argv){
     {
         struct ggml_init_params params_compute = {
             compute_size, 
-            compute_addr, 
+            compute_addr,
             false, 
         }; 
 
@@ -703,11 +710,11 @@ int main(int argc, char ** argv){
 
         int n_past = 0; 
         struct ggml_tensor * logits = forward_batch(&model, &kv_self, ctx_compute, gf, tokens_input, n_tokens, n_past, n_batch); 
+
         ggml_graph_compute_helper(work_buffer, gf, /*n_threads*/ 1);
-        
         ggml_free(ctx_compute); 
     }
-    
+        dump_ggml_tensor_f32_1d(kv_self.k, 8, -1);                
 
     
     //Generation 

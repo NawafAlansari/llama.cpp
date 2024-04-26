@@ -338,6 +338,14 @@
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_baby_llama/CMakeFiles/install.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_baby_llama/CMakeFiles/install/local.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/my_baby_llama/CMakeFiles/install/strip.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/prompt-tuning.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/test.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/edit_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/rebuild_cache.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/list_install_components.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/install.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/install/local.dir
+/home/nma5214/.vscodeProjects/clones/llama.cpp/examples/prompt_tuning/CMakeFiles/install/strip.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/server/CMakeFiles/server.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/server/CMakeFiles/test.dir
 /home/nma5214/.vscodeProjects/clones/llama.cpp/examples/server/CMakeFiles/edit_cache.dir

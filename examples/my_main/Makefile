@@ -185,6 +185,30 @@ my_main/fast:
 	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/my_main/CMakeFiles/my_main.dir/build.make examples/my_main/CMakeFiles/my_main.dir/build
 .PHONY : my_main/fast
 
+chat.o: chat.cpp.o
+.PHONY : chat.o
+
+# target to build an object file
+chat.cpp.o:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/my_main/CMakeFiles/my_main.dir/build.make examples/my_main/CMakeFiles/my_main.dir/chat.cpp.o
+.PHONY : chat.cpp.o
+
+chat.i: chat.cpp.i
+.PHONY : chat.i
+
+# target to preprocess a source file
+chat.cpp.i:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/my_main/CMakeFiles/my_main.dir/build.make examples/my_main/CMakeFiles/my_main.dir/chat.cpp.i
+.PHONY : chat.cpp.i
+
+chat.s: chat.cpp.s
+.PHONY : chat.s
+
+# target to generate assembly for a file
+chat.cpp.s:
+	cd /home/nma5214/.vscodeProjects/clones/llama.cpp && $(MAKE) $(MAKESILENT) -f examples/my_main/CMakeFiles/my_main.dir/build.make examples/my_main/CMakeFiles/my_main.dir/chat.cpp.s
+.PHONY : chat.cpp.s
+
 generation.o: generation.cpp.o
 .PHONY : generation.o
 
@@ -271,6 +295,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... my_main"
+	@echo "... chat.o"
+	@echo "... chat.i"
+	@echo "... chat.s"
 	@echo "... generation.o"
 	@echo "... generation.i"
 	@echo "... generation.s"

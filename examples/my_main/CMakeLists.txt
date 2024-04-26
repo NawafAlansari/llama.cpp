@@ -1,5 +1,5 @@
 set(TARGET my_main)
-add_executable(${TARGET} my_main.cpp generation.cpp helpers.cpp)
+add_executable(${TARGET} my_main.cpp chat.cpp generation.cpp helpers.cpp)
 install(TARGETS ${TARGET} RUNTIME)
 target_link_libraries(${TARGET} PRIVATE common llama ${CMAKE_THREAD_LIBS_INIT})
 target_compile_features(${TARGET} PRIVATE cxx_std_11)

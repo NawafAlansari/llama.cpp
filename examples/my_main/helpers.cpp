@@ -1,15 +1,9 @@
 #include "helpers.h"
 
-std::pair<llama_model_params, llama_context_params> getParams(int argc, char **argv){
-    llama_model_params mparams = llama_model_default_params(); 
-    llama_context_params params = llama_context_default_params();
 
 
 
-    return {mparams, params}; 
-}
-
-
+/**************************** Model and Context **************************/
 std::pair<llama_model*, llama_context*> initModelAndContext(std::string model_path, llama_model_params mparams, llama_context_params params){
      LOG("%s: llama backend init\n", __func__);
     llama_backend_init();
