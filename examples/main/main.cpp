@@ -376,7 +376,7 @@ int main(int argc, char ** argv) {
 
     // enable interactive mode if interactive start is specified
     if (params.interactive_first) {
-        params.interactive = true;
+params.interactive = true;
     }
 
     if (params.verbose_prompt) {
