@@ -31,14 +31,28 @@
 #pragma warning(disable: 4244 4267) // possible loss of data
 #endif
 
-static llama_context           ** g_ctx;
-static llama_model             ** g_model;
-static gpt_params               * g_params;
-static std::vector<llama_token> * g_input_tokens;
-static std::ostringstream       * g_output_ss;
-static std::vector<llama_token> * g_output_tokens;
-static bool is_interacting  = false;
-static bool need_insert_eot = false;
+
+struct GenerationContext {
+    llama_context *ctx;
+    llama_context *ctx_guidance; // Optional, include if needed
+    gpt_params params;
+    int n_past;
+    int n_past_guidance; // Optional, include if needed
+    int ga_i;
+    int ga_n;
+    int ga_w;
+    std::string path_session;
+    bool need_to_save_session;
+    std::vector<llama_token> session_tokens;
+};
+
+struct IOData {
+    std::vector<int> input_tokens;
+    std::vector<int> output_tokens;
+    std::ostringstream output_ss;
+    std::ostringstream assistant_ss; // If used in conversation mode
+};
+
 
 static bool file_exists(const std::string & path) {
     std::ifstream f(path.c_str());
@@ -97,16 +111,29 @@ static void write_logfile(
 }
 
 #if defined (__unix__) || (defined (__APPLE__) && defined (__MACH__)) || defined (_WIN32)
-static void sigint_handler(int signo) {
+static void sigint_handler(int signo, siginfo_t *siginfo, void *context) {
     if (signo == SIGINT) {
-        if (!is_interacting && g_params->interactive) {
-            is_interacting  = true;
-            need_insert_eot = true;
+        auto data = static_cast<std::tuple<bool*, bool*, llama_model*, GenerationContext*, IOData*>*>(siginfo->si_value.sival_ptr); 
+        bool *is_interacting_ptr = std::get<0>(*data);
+        bool *need_insert_eot_ptr = std::get<1>(*data);
+        llama_model *model = std::get<2>(*data);
+        GenerationContext *gen_ctx = std::get<3>(*data);
+        IOData *io_data = std::get<4>(*data);
+        
+        
+        
+        bool is_interacting = *is_interacting_ptr;
+        bool need_insert_eot = *need_insert_eot_ptr;
+        bool interactive = gen_ctx->params.interactive;
+        
+        if (!is_interacting && gen_ctx->params.interactive) {
+            *is_interacting_ptr  = true;
+            *need_insert_eot_ptr = true;
         } else {
             console::cleanup();
             printf("\n");
-            llama_print_timings(*g_ctx);
-            write_logfile(*g_ctx, *g_params, *g_model, *g_input_tokens, g_output_ss->str(), *g_output_tokens);
+            llama_print_timings(gen_ctx->ctx);
+            write_logfile(gen_ctx->ctx, gen_ctx->params, model, io_data->input_tokens, io_data->output_ss.str(), io_data->output_tokens);
             _exit(130);
         }
     }
@@ -119,10 +146,10 @@ static void llama_log_callback_logTee(ggml_log_level level, const char * text, v
     LOG_TEE("%s", text);
 }
 
-static std::string chat_add_and_format(struct llama_model * model, std::vector<llama_chat_msg> & chat_msgs, std::string role, std::string content) {
+static std::string chat_add_and_format(struct llama_model * model, std::vector<llama_chat_msg> & chat_msgs, std::string role, std::string content, const gpt_params *params) {
     llama_chat_msg new_msg{role, content};
     auto formatted = llama_chat_format_single(
-        model, g_params->chat_template, chat_msgs, new_msg, role == "user");
+        model, params->chat_template, chat_msgs, new_msg, role == "user");
     chat_msgs.push_back({role, content});
     LOG("formatted: %s\n", formatted.c_str());
     return formatted;
@@ -131,30 +158,12 @@ static std::string chat_add_and_format(struct llama_model * model, std::vector<l
 
 
 
-struct GenerationContext {
-    llama_context *ctx;
-    llama_context *ctx_guidance; // Optional, include if needed
-    gpt_params params;
-    int n_past;
-    int n_past_guidance; // Optional, include if needed
-    int ga_i;
-    int ga_n;
-    int ga_w;
-    std::string path_session;
-    bool need_to_save_session;
-    std::vector<llama_token> session_tokens;
-};
 
-struct IOData {
-    std::vector<int> input_tokens;
-    std::vector<int> output_tokens;
-    std::ostringstream output_ss;
-    std::ostringstream assistant_ss; // If used in conversation mode
-};
 
 // 1.1 Context Management
 void manage_context_window(GenerationContext &gen_ctx, const std::vector<llama_token> &embd, int guidance_offset) {
     const int n_ctx = llama_n_ctx(gen_ctx.ctx);
+   
 
     if (gen_ctx.ga_n == 1) {
         // Infinite text generation via context shifting
@@ -297,7 +306,8 @@ void process_input_or_sample_token(
     const std::vector<llama_token> &embd_inp,
     int &n_consumed,
     int &n_remain,
-    bool &input_echo
+    bool &input_echo, 
+    bool is_interacting
 ) {
     if ((int) embd_inp.size() <= n_consumed && !is_interacting) {
         // Optionally save the session on first sample
@@ -482,7 +492,7 @@ void handle_user_interaction(
 
         bool format_chat = params.conversation && params.enable_chat_template;
         std::string user_inp = format_chat
-                                   ? chat_add_and_format(model, chat_msgs, "user", std::move(buffer))
+                                   ? chat_add_and_format(model, chat_msgs, "user", std::move(buffer), &params)
                                    : std::move(buffer);
 
         const auto line_pfx = ::llama_tokenize(ctx, params.input_prefix, false, true);
@@ -541,7 +551,7 @@ void handle_end_of_generation(
             }
 
             if (params.enable_chat_template) {
-                chat_add_and_format(model, chat_msgs, "assistant", assistant_ss.str());
+                chat_add_and_format(model, chat_msgs, "assistant", assistant_ss.str(), &params);
             }
             is_interacting = true;
             printf("\n");
@@ -563,8 +573,10 @@ void handle_conversation_mode(
 }
 
 int main(int argc, char ** argv) {
+    bool is_interacting = false; 
+    bool need_insert_eot = false;
+    
     gpt_params params;
-    g_params = &params;
 
     if (!gpt_params_parse(argc, argv, params)) {
         gpt_params_print_usage(argc, argv, params);
@@ -636,8 +648,6 @@ int main(int argc, char ** argv) {
     llama_context * ctx;
     llama_context * ctx_guidance = NULL;
     std::vector<llama_chat_msg> chat_msgs;
-    g_model = &model;
-    g_ctx = &ctx;
 
     // load the model and apply lora adapter, if any
     LOG("%s: load the model and apply lora adapter, if any\n", __func__);
@@ -711,7 +721,7 @@ int main(int argc, char ** argv) {
 
     {
         auto prompt = (params.conversation && params.enable_chat_template && !params.prompt.empty())
-            ? chat_add_and_format(model, chat_msgs, "system", params.prompt) // format the system prompt in conversation mode
+            ? chat_add_and_format(model, chat_msgs, "system", params.prompt, &params)
             : params.prompt;
         if (params.interactive_first || !params.prompt.empty() || session_tokens.empty()) {
             LOG("tokenize the prompt\n");
@@ -839,15 +849,52 @@ params.interactive = true;
         }
         LOG_TEE("\n");
     }
+    // number of grouped KV tokens so far (used only if params.grp_attn_n > 1)
+
+    // group-attention state
+
+    int ga_i = 0;
+    const int ga_n = params.grp_attn_n;
+    const int ga_w = params.grp_attn_w;
+
+    int n_past             = 0;
+    int n_remain           = params.n_predict;
+    int n_consumed         = 0;
+    int n_session_consumed = 0;
+    int n_past_guidance    = 0;
+
+    bool is_antiprompt        = false;
+    bool input_echo           = true;
+    bool display              = true;
+    bool need_to_save_session = !path_session.empty() && n_matching_session_tokens < embd_inp.size();
+
+    
+
+    std::vector<int>   input_tokens;
+    std::vector<int>   output_tokens; 
+    std::ostringstream output_ss; 
+    std::ostringstream assistant_ss; // for storing current assistant message, used in conversation mode
+
+
+    GenerationContext gen_ctx{ctx, ctx_guidance, params, n_past, n_past_guidance, ga_i, ga_n, ga_w, path_session, need_to_save_session, session_tokens};
+    IOData io_data{input_tokens, output_tokens, std::move(output_ss), std::move(assistant_ss)}; 
 
     // ctrl+C handling
+
+    auto data = std::make_tuple(&is_interacting, &need_insert_eot, &model, &gen_ctx, &io_data);
     {
 #if defined (__unix__) || (defined (__APPLE__) && defined (__MACH__))
         struct sigaction sigint_action;
-        sigint_action.sa_handler = sigint_handler;
+        sigint_action.sa_sigaction = sigint_handler; 
         sigemptyset (&sigint_action.sa_mask);
-        sigint_action.sa_flags = 0;
-        sigaction(SIGINT, &sigint_action, NULL);
+        sigint_action.sa_flags = SA_SIGINFO;
+
+        union sigval  sig_value; 
+        sig_value.sival_ptr = &data; 
+
+        sigaction(SIGINT, &sigint_action, NULL); 
+        
+        
 #elif defined (_WIN32)
         auto console_ctrl_handler = +[](DWORD ctrl_type) -> BOOL {
             return (ctrl_type == CTRL_C_EVENT) ? (sigint_handler(SIGINT), true) : false;
@@ -855,6 +902,7 @@ params.interactive = true;
         SetConsoleCtrlHandler(reinterpret_cast<PHANDLER_ROUTINE>(console_ctrl_handler), true);
 #endif
     }
+    
 
     if (params.interactive) {
         LOG_TEE("%s: interactive mode on.\n", __func__);
@@ -870,6 +918,7 @@ params.interactive = true;
                 }
             }
         }
+
 
         if (params.input_prefix_bos) {
             LOG_TEE("Input prefix with BOS\n");
@@ -895,16 +944,12 @@ params.interactive = true;
             }
         }
     }
+
     LOG_TEE("sampling: \n%s\n", llama_sampling_print(sparams).c_str());
     LOG_TEE("sampling order: \n%s\n", llama_sampling_order_print(sparams).c_str());
     LOG_TEE("generate: n_ctx = %d, n_batch = %d, n_predict = %d, n_keep = %d\n", n_ctx, params.n_batch, params.n_predict, params.n_keep);
 
-    // group-attention state
-    // number of grouped KV tokens so far (used only if params.grp_attn_n > 1)
-    int ga_i = 0;
-
-    const int ga_n = params.grp_attn_n;
-    const int ga_w = params.grp_attn_w;
+  
 
     if (ga_n != 1) {
         GGML_ASSERT(ga_n > 0                    && "grp_attn_n must be positive");                     // NOLINT
@@ -934,22 +979,7 @@ params.interactive = true;
         is_interacting = params.interactive_first;
     }
 
-    bool is_antiprompt        = false;
-    bool input_echo           = true;
-    bool display              = true;
-    bool need_to_save_session = !path_session.empty() && n_matching_session_tokens < embd_inp.size();
-
-    int n_past             = 0;
-    int n_remain           = params.n_predict;
-    int n_consumed         = 0;
-    int n_session_consumed = 0;
-    int n_past_guidance    = 0;
-
-    std::vector<int>   input_tokens;  g_input_tokens  = &input_tokens;
-    std::vector<int>   output_tokens; g_output_tokens = &output_tokens;
-    std::ostringstream output_ss;     g_output_ss     = &output_ss;
-    std::ostringstream assistant_ss; // for storing current assistant message, used in conversation mode
-
+    
     // the first thing we will do is to output the prompt, so set color accordingly
     console::set_display(console::prompt);
     display = params.display_prompt;
@@ -989,13 +1019,25 @@ params.interactive = true;
         embd_inp.push_back(decoder_start_token_id);
     }
 
-    GenerationContext gen_ctx{ctx, ctx_guidance, params, n_past, n_past_guidance, ga_i, ga_n, ga_w, path_session, need_to_save_session, session_tokens};
-    IOData io_data{input_tokens, output_tokens, std::move(output_ss), std::move(assistant_ss)}; 
+    
 
 
     while ((n_remain != 0 && !is_antiprompt) || params.interactive) {
         // predict
         if (!embd.empty()) {
+            int max_embd_size = n_ctx - 4; 
+            // Ensure the input doesn't exceed the context size by truncating embd if necessary.
+            if ((int) embd.size() > max_embd_size){
+                const int skipped_tokens = (int) embd.size() - max_embd_size; 
+                embd.resize(max_embd_size); 
+
+                console::set_display(console::error);
+                printf("<<input too long: skipped %d token%s>>", skipped_tokens, skipped_tokens != 1 ? "s" : "");
+                console::set_display(console::reset);
+                fflush(stdout);
+
+            }
+            
             manage_context_window(gen_ctx, embd, guidance_offset);
             if (ctx_guidance) { 
                 evaluate_on_guidance_model(gen_ctx, embd_guidance, guidance_inp, embd, original_prompt_len);
@@ -1005,7 +1047,7 @@ params.interactive = true;
         }
         embd.clear();
         embd_guidance.clear();
-        process_input_or_sample_token(gen_ctx, ctx_sampling, embd, embd_inp, n_consumed, n_remain, input_echo); 
+        process_input_or_sample_token(gen_ctx, ctx_sampling, embd, embd_inp, n_consumed, n_remain, input_echo, is_interacting); 
         display_and_record_tokens(gen_ctx.ctx, embd, io_data, gen_ctx.params, input_echo, display, embd_inp, n_consumed); 
 
         // if not currently processing queued inputs;
